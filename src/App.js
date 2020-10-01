@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 // import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 import { db } from "./firebase";
 import Profile from "./components/Profile/";
 import Projects from "./components/Projects/";
 import Skills from "./components/Skills/";
 import Work from "./components/Work/";
 import Education from "./components/Education/";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 class App extends Component {
   constructor() {
@@ -229,7 +230,11 @@ class App extends Component {
         </div>
       );
     } else {
-      return <h1>Loading</h1>;
+      return (
+        <div className="loadscreen">
+          <CircularProgress /> <h2>Loading</h2>
+        </div>
+      );
     }
   }
 }

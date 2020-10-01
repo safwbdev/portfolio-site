@@ -1,0 +1,249 @@
+.intro-section {
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(#0e1025),
+    to(#373447)
+  );
+  background-image: linear-gradient(0deg, #0e1025 0, #373447);
+  color: #ffffff;
+  svg {
+    color: #ffffff;
+  }
+  .profile-row {
+    img {
+      border-radius: 50%;
+      width: 90%;
+      box-shadow: 1px 2px 1px grey;
+    }
+    .detail-links {
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+}
+.desc-section {
+  padding: 0;
+  background-attachment: fixed;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  h6 {
+    color: #ffffff;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 11px 1px 6px #000;
+  }
+}
+// DESKTOP
+@media only screen and (min-width: 1201px) {
+  .intro-section {
+    height: 100vh;
+    .profile-row {
+      height: 60vh;
+      display: flex;
+      align-items: center;
+    }
+    .desc-section {
+      position: absolute;
+      bottom: 0;
+      height: 40vh;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+.intro-section {
+  .profile-row {
+    .titles {
+      margin-bottom: 2em;
+      h2 {
+        font-weight: 700;
+      }
+      h3 {
+        font-style: italic;
+      }
+    }
+  }
+}
+@media screen and (device-width: 480px) and (device-height: 640px) {
+  .intro-section {
+    .profile-row {
+      text-align: center;
+      padding-top: 2em;
+      height: 100vh;
+      .titles {
+        margin: 2em 0;
+        h2 {
+          margin-bottom: 0.6em;
+          font-size: 1.9rem !important;
+        }
+        h3 {
+          font-size: 1.7rem !important;
+        }
+      }
+      .link-btn {
+        background: #ffffff;
+        svg {
+          color: #373447;
+        }
+      }
+      .location {
+        margin-top: 2em;
+      }
+      img {
+        margin: 30px 0 0;
+        width: 60%;
+      }
+    }
+    .desc-section {
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+  }
+
+  .slick-slide {
+    margin: 0 10px;
+    background: #000000;
+    /* border-radius: 20px; */
+  }
+  .project-slider .slick-slide {
+    margin: 0;
+    background: transparent;
+  }
+  .task-dialogbox {
+    .MuiDialog-paper {
+      border: 1px solid #ffffff;
+      background: #000000;
+      color: #ffffff;
+    }
+  }
+  .task-dialogbox {
+    .MuiDialog-paper {
+      .MuiDialogTitle-root {
+        h2 {
+          /* border-bottom: 1px solid #ffffff; */
+          font-weight: 700 !important;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .project-section {
+    .MuiContainer-root {
+      padding: 0;
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .intro-section {
+    .profile-row {
+      height: 100vh;
+      text-align: center;
+      padding-top: 2em;
+      .titles {
+        margin: 2em 0;
+        h2 {
+          margin-bottom: 0.6em;
+          font-size: 1.9rem !important;
+        }
+        h3 {
+          font-size: 1.7rem !important;
+        }
+      }
+      .link-btn {
+        background: #ffffff;
+        svg {
+          color: #373447;
+        }
+      }
+      .location {
+        margin-top: 2em;
+      }
+      img {
+        margin: 30px 0 0;
+        width: 60%;
+      }
+    }
+    .desc-section {
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+  }
+  .work,
+  .edu {
+    &-slider.MuiGrid-container {
+      padding: 0 0 0 15px;
+    }
+  }
+  .project-section {
+    .project-slider {
+      padding: 0 0 0 15px;
+    }
+  }
+}
+// IPAD LANDSCAPE
+// @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+@media (max-device-width: 1280px) and (orientation: landscape) {
+  .intro-section {
+    height: 100vh;
+    .profile-row {
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      .titles {
+        // border: 1px solid blue !important;
+      }
+      .profile-image {
+        text-align: center;
+        img {
+          margin: 0 0 30px;
+          width: 90%;
+        }
+      }
+    }
+    .desc-section {
+      position: absolute;
+      bottom: 0;
+      height: 40vh;
+      display: flex;
+      align-items: center;
+    }
+  }
+} // IPAD PORTRAIT
+@media only screen and (min-device-width: 800px) and (max-device-width: 1024px) and (orientation: portrait) {
+  // @media (max-device-width: 800px) and (orientation: portrait) {
+  .intro-section {
+    height: 100vh;
+    .profile-row {
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      .titles {
+        // border: 1px solid red !important;
+        text-align: center;
+      }
+      .profile-image {
+        text-align: center;
+        img {
+          margin: 0 0 30px;
+          width: 30%;
+        }
+      }
+    }
+    .desc-section {
+      position: absolute;
+      bottom: 0;
+      height: 40vh;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

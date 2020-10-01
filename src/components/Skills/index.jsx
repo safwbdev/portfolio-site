@@ -1,13 +1,30 @@
 import React from "react";
+import "./index.scss";
+import { Grid, Chip, Typography } from "@material-ui/core";
+
 function Skills({ title, data }) {
   return (
-    <div>
-      <h1>{title}</h1>
+    <Grid item xs={12} className="skill-box">
+      <Typography variant="h5" component="h5">
+        {title}
+      </Typography>
       {data &&
         data.map((data, index) => {
-          return <div key={index}>{data.name}</div>;
+          const content = (
+            <span>
+              <i className={data.icon}></i> <>{data.name}</>
+            </span>
+          );
+          return (
+            <Chip
+              key={index}
+              size="medium"
+              label={content}
+              className={data.type}
+            ></Chip>
+          );
         })}
-    </div>
+    </Grid>
   );
 }
 export default Skills;
