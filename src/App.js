@@ -1,7 +1,12 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import { db } from "./firebase";
+import Profile from "./components/Profile/";
+import Projects from "./components/Projects/";
+import Skills from "./components/Skills/";
+import Work from "./components/Work/";
+import Education from "./components/Education/";
 
 class App extends Component {
   constructor() {
@@ -25,6 +30,16 @@ class App extends Component {
     };
   }
   async componentDidMount() {
+    // PROFILE
+    await db
+      .collection("profile")
+      .doc("main")
+      .get()
+      .then((docRef) => {
+        this.setState({ profile: docRef.data() });
+      })
+      .catch((error) => {});
+
     // PROJECTS
     await db
       .collection("projects")
@@ -161,33 +176,60 @@ class App extends Component {
       });
   }
   render() {
-    const { work, loaded } = this.state;
+    const {
+      work,
+      education,
+      profile,
+      loaded,
+      projects_client,
+      projects_personal,
+      skill_cms,
+      skill_essential,
+      skill_framework,
+      skill_database,
+      skill_design,
+      skill_library,
+      skill_os,
+      skill_technical,
+      skill_tools,
+    } = this.state;
+
+    const skillArray = [
+      { title: "Essentials", data: skill_essential },
+      { title: "Technical", data: skill_technical },
+      { title: "Frameworks", data: skill_framework },
+      { title: "Libraries", data: skill_library },
+      { title: "Database", data: skill_database },
+      { title: "Content Management Systems", data: skill_cms },
+      { title: "Operating Systems", data: skill_os },
+      { title: "Tools", data: skill_tools },
+      { title: "Design", data: skill_design },
+    ];
 
     if (loaded) {
       return (
         <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            {work &&
-              work.map((data, index) => {
-                return <li key={index}>{data.name}</li>;
-              })}
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
+          <Profile data={profile} />
+          <Projects
+            title="Client Projects"
+            subtitle="insert subtitle here"
+            data={projects_client}
+          />
+          <Projects
+            title="Personal Projects"
+            subtitle="insert second subtitle here"
+            data={projects_personal}
+          />
+          {skillArray &&
+            skillArray.map(({ title, data }, index) => {
+              return <Skills key={index} title={title} data={data} />;
+            })}
+          <Work data={work} />
+          <Education data={education} />
         </div>
       );
     } else {
-      return <h1>LOading</h1>;
+      return <h1>Loading</h1>;
     }
   }
 }
