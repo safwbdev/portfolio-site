@@ -6,7 +6,6 @@ import Dialog from "@material-ui/core/Dialog";
 import { DialogActions, DialogContent } from "@material-ui/core";
 import { WORK_TASKS, WORK_TASK_BTN, WORK_CLOSE } from "../../constants/lang";
 
-// FIX THIS
 function SimpleDialog(props) {
   const { onClose, selectedValue, open, name, tasks } = props;
 
@@ -46,7 +45,7 @@ SimpleDialog.propTypes = {
   selectedValue: PropTypes.bool.isRequired,
 };
 
-const SimpleDialogDemo = ({ name, tasks }) => {
+function WorkDialog({ name, tasks }) {
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(true);
 
@@ -77,5 +76,5 @@ const SimpleDialogDemo = ({ name, tasks }) => {
       />
     </>
   );
-};
-export default SimpleDialogDemo;
+}
+export default WorkDialog;
