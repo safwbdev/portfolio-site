@@ -3,8 +3,9 @@ import { Typography, Card, CardContent, Hidden } from "@material-ui/core";
 import moment from "moment";
 import WorkDialog from "./WorkDialog";
 
-const WorkBox = ({ data }) => {
-  const { image, startDate, endDate, name, location, role, desc } = data;
+const WorkBox = ({
+  data: { image, startDate, endDate, name, location, role, desc },
+}) => {
   const getWorkDate = (date) => {
     const d = new Date(date);
     const newDate = moment(d).format("MMM YYYY");
@@ -14,7 +15,6 @@ const WorkBox = ({ data }) => {
     <div className="work-box">
       <Card>
         <CardContent className="work-content">
-          {/* <Avatar alt="" src={image} className="edu-img" /> */}
           <img alt="" src={image} className="work-img" />
           <div className="block">
             <Typography component="h6" variant="h6">

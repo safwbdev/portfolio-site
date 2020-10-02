@@ -1,4 +1,13 @@
 import React from "react";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import LaunchIcon from "@material-ui/icons/Launch";
+import { TYPE_PERSONAL } from "../../constants/types";
+import { STYLE_PROJECT_BOX } from "../../constants/makeStyles";
+import {
+  PROJECT_VISIT,
+  PROJECT_DEMO,
+  PROJECT_GITHUB,
+} from "../../constants/lang";
 import {
   Typography,
   Chip,
@@ -10,60 +19,47 @@ import {
   CardContent,
   Hidden,
 } from "@material-ui/core";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import LaunchIcon from "@material-ui/icons/Launch";
-import {
-  PROJECT_VISIT,
-  PROJECT_DEMO,
-  PROJECT_GITHUB,
-} from "../../constants/lang";
-import { TYPE_PERSONAL } from "../../constants/types";
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: "95%",
-    maxHeight: "inherit",
-    height: "inherit",
-    background: "#000000",
-    color: "#ffffff",
-  },
-  media: {
-    height: 300,
-    backgroundPosition: "inherit",
-  },
-  frameworks: {
-    display: "block",
-  },
-  widthFull: {
-    width: "100%",
-  },
-  widthHalf: {
-    width: "50%",
-  },
-  buttonLink: {
-    width: "100%",
-    color: "#ffffff",
-    border: "1px solid #ffffff",
-  },
-  iconLink: {
-    padding: "5px",
-  },
-});
+const useStyles = makeStyles(STYLE_PROJECT_BOX);
+
 function ProjectBox({
   getType,
   data: { image, title, desc, skillType, demo, github },
 }) {
   const classes = useStyles();
-  // console.log(data);
-  return (
-    <Card className={classes.root}>
-      <CardMedia className={classes.media} image={image} title="" />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          {title}
-        </Typography>
-        <Typography variant="body2">{desc}</Typography>
-      </CardContent>
+
+  const GithubLink = () => {
+    return (
+      <a
+        href={github}
+        className={classes.widthFull}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button variant="outlined" className={classes.buttonLink}>
+          <GitHubIcon className={classes.iconLink} />
+          {PROJECT_GITHUB}
+        </Button>
+      </a>
+    );
+  };
+  const DemoLink = () => {
+    return (
+      <a
+        href={demo}
+        className={classes.widthFull}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button variant="outlined" className={classes.buttonLink}>
+          <LaunchIcon className={classes.iconLink} />
+          {getType === TYPE_PERSONAL ? PROJECT_DEMO : PROJECT_VISIT}
+        </Button>
+      </a>
+    );
+  };
+  const FrameworksUsed = () => {
+    return (
       <CardActions className={classes.frameworks}>
         {skillType &&
           skillType.map((data, index) => {
@@ -78,37 +74,22 @@ function ProjectBox({
             return <Chip key={index} size="medium" label={content}></Chip>;
           })}
       </CardActions>
+    );
+  };
+
+  return (
+    <Card className={classes.root}>
+      <CardMedia className={classes.media} image={image} title={title} />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h2">
+          {title}
+        </Typography>
+        <Typography variant="body2">{desc}</Typography>
+      </CardContent>
+      <FrameworksUsed />
       <CardActions>
-        {demo ? (
-          <a
-            href={demo}
-            className={classes.widthFull}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="outlined" className={classes.buttonLink}>
-              {/* <IconButton className="icon-link"> */}
-              <LaunchIcon className={classes.iconLink} />
-              {/* </IconButton> */}
-              {getType === TYPE_PERSONAL ? PROJECT_DEMO : PROJECT_VISIT}
-            </Button>
-          </a>
-        ) : null}
-        {github ? (
-          <a
-            href={github}
-            className={classes.widthFull}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="outlined" className={classes.buttonLink}>
-              {/* <IconButton className="icon-link"> */}
-              <GitHubIcon className={classes.iconLink} />
-              {/* </IconButton> */}
-              {PROJECT_GITHUB}
-            </Button>
-          </a>
-        ) : null}
+        {demo ? <DemoLink /> : null}
+        {github ? <GithubLink /> : null}
       </CardActions>
     </Card>
   );

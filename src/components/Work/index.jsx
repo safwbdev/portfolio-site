@@ -35,13 +35,17 @@ function Work({ title, data }) {
     );
   };
 
-  return (
-    <div className="work-section">
-      <Grid item xs={12} className="skill-box">
-        <Typography variant="h4" component="h4">
-          {WORK_TITLE}
-        </Typography>
-      </Grid>
+  const MobileWork = () => {
+    return (
+      <Hidden smUp>
+        <Grid container spacing={0} className="work-slider">
+          {WorkSlider(data)}
+        </Grid>
+      </Hidden>
+    );
+  };
+  const DesktopWork = () => {
+    return (
       <Hidden only="xs">
         <Container maxWidth="lg">
           <Grid container spacing={0} className="work-slider">
@@ -49,11 +53,18 @@ function Work({ title, data }) {
           </Grid>
         </Container>
       </Hidden>
-      <Hidden smUp>
-        <Grid container spacing={0} className="work-slider">
-          {WorkSlider(data)}
-        </Grid>
-      </Hidden>
+    );
+  };
+
+  return (
+    <div className="work-section">
+      <Grid item xs={12} className="skill-box">
+        <Typography variant="h4" component="h4">
+          {WORK_TITLE}
+        </Typography>
+      </Grid>
+      <DesktopWork />
+      <MobileWork />
     </div>
   );
 }

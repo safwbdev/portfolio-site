@@ -1,21 +1,14 @@
 import React from "react";
-import {
-  Grid,
-  Container,
-  Typography,
-  Hidden,
-  // IconButton,
-  //   Hidden,
-} from "@material-ui/core";
+import { Grid, Container, Typography, Hidden } from "@material-ui/core";
 import ProjectBox from "./ProjectBox";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { TYPE_CLIENT, TYPE_PERSONAL } from "../../constants/types";
 import {
   PERSONAL_PROJECT_SETTINGS,
   CLIENT_PROJECT_SETTINGS,
 } from "../../constants/sliderSettings";
-import { TYPE_CLIENT, TYPE_PERSONAL } from "../../constants/types";
 import "./index.scss";
 
 function Projects({ title, data, subtitle, getType }) {
@@ -29,7 +22,6 @@ function Projects({ title, data, subtitle, getType }) {
   }
 
   const ProjectSlider = (projectData) => {
-    // console.log(getType);
     return (
       <Slider {...settings}>
         {projectData &&

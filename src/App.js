@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import logo from "./logo.svg";
 import "./App.scss";
 import { db } from "./firebase";
 import Profile from "./components/Profile/";
@@ -29,6 +28,7 @@ import {
   TYPE_TECHNICAL,
 } from "./constants/types";
 import {
+  PROFILE_LOADING,
   PROJECT_CLIENT_TITLE,
   PROJECT_CLIENT_SUBTITLE,
   PROJECT_PERSONAL_TITLE,
@@ -43,6 +43,7 @@ import {
   SKILL_TOOLS,
   SKILL_DESIGN,
 } from "./constants/lang";
+
 class App extends Component {
   constructor() {
     super();
@@ -116,6 +117,7 @@ class App extends Component {
 
         this.setState({ work: work });
       });
+
     // EDUCATION
     await db
       .collection(COLLECTION_EDUCATION)
@@ -129,7 +131,6 @@ class App extends Component {
       });
 
     // SKILLS
-
     let essentialSkills = [];
     let cmsSkills = [];
     let osSkills = [];
@@ -139,6 +140,7 @@ class App extends Component {
     let frameworkSkills = [];
     let librarySkills = [];
     let technicalSkills = [];
+
     await db
       .collection(COLLECTION_SKILLS)
       .orderBy("name", "asc")
@@ -262,7 +264,7 @@ class App extends Component {
     } else {
       return (
         <div className="loadscreen">
-          <CircularProgress /> <h2>Loading</h2>
+          <CircularProgress /> <h2>{PROFILE_LOADING}</h2>
         </div>
       );
     }
