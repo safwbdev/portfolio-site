@@ -1,0 +1,34 @@
+.project-slider {
+  .slick-slider {
+    width: 100%;
+    .slick-slide {
+      img {
+        display: inline !important;
+      }
+    }
+  }
+}
+@media screen and (device-width: 480px) and (device-height: 640px) {
+  .slick-slide {
+    margin: 0 10px;
+    background: #000000;
+    /* border-radius: 20px; */
+  }
+  .project-slider .slick-slide {
+    margin: 0;
+    background: transparent;
+  }
+
+  .project-section {
+    .MuiContainer-root {
+      padding: 0;
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .project-section {
+    .project-slider {
+      padding: 0 0 0 15px;
+    }
+  }
+}

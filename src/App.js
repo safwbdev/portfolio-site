@@ -7,7 +7,14 @@ import Projects from "./components/Projects/";
 import Skills from "./components/Skills/";
 import Work from "./components/Work/";
 import Education from "./components/Education/";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import { CircularProgress } from "@material-ui/core/";
+import {
+  COLLECTION_PROFILE,
+  COLLECTION_PROJECT,
+  COLLECTION_WORK,
+  COLLECTION_EDUCATION,
+  COLLECTION_SKILLS,
+} from "./constants/collections";
 
 class App extends Component {
   constructor() {
@@ -33,7 +40,7 @@ class App extends Component {
   async componentDidMount() {
     // PROFILE
     await db
-      .collection("profile")
+      .collection(COLLECTION_PROFILE)
       .doc("main")
       .get()
       .then((docRef) => {
@@ -43,7 +50,7 @@ class App extends Component {
 
     // PROJECTS
     await db
-      .collection("projects")
+      .collection(COLLECTION_PROJECT)
       .where("projectType", "==", "client")
       .onSnapshot((snapshot) => {
         const clientProjects = snapshot.docs.map((doc) => ({
@@ -51,11 +58,11 @@ class App extends Component {
           ...doc.data(),
         }));
 
-        this.setState({ projects_client: clientProjects, loaded: true });
+        this.setState({ projects_client: clientProjects });
       });
 
     await db
-      .collection("projects")
+      .collection(COLLECTION_PROJECT)
       .where("projectType", "==", "personal")
       .onSnapshot((snapshot) => {
         const personalProjects = snapshot.docs.map((doc) => ({
@@ -64,116 +71,115 @@ class App extends Component {
         }));
         this.setState({ projects_personal: personalProjects, loaded: true });
       });
-
     // WORK EXPERIENCE
-    await db.collection("work").onSnapshot((snapshot) => {
+    await db.collection(COLLECTION_WORK).onSnapshot((snapshot) => {
       const work = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
 
-      this.setState({ work: work, loaded: true });
+      this.setState({ work: work });
     });
     // EDUCATION
-    await db.collection("education").onSnapshot((snapshot) => {
+    await db.collection(COLLECTION_EDUCATION).onSnapshot((snapshot) => {
       const education = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-      this.setState({ education: education, loaded: true });
+      this.setState({ education: education });
     });
 
     // SKILLS
     await db
-      .collection("skills")
+      .collection(COLLECTION_SKILLS)
       .where("type", "==", "cms")
       .onSnapshot((snapshot) => {
         const skills = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        this.setState({ skill_cms: skills, loaded: true });
+        this.setState({ skill_cms: skills });
       });
     await db
-      .collection("skills")
+      .collection(COLLECTION_SKILLS)
       .where("type", "==", "database")
       .onSnapshot((snapshot) => {
         const skills = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        this.setState({ skill_database: skills, loaded: true });
+        this.setState({ skill_database: skills });
       });
     await db
-      .collection("skills")
+      .collection(COLLECTION_SKILLS)
       .where("type", "==", "design")
       .onSnapshot((snapshot) => {
         const skills = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        this.setState({ skill_design: skills, loaded: true });
+        this.setState({ skill_design: skills });
       });
     await db
-      .collection("skills")
+      .collection(COLLECTION_SKILLS)
       .where("type", "==", "essential")
       .onSnapshot((snapshot) => {
         const skills = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        this.setState({ skill_essential: skills, loaded: true });
+        this.setState({ skill_essential: skills });
       });
     await db
-      .collection("skills")
+      .collection(COLLECTION_SKILLS)
       .where("type", "==", "framework")
       .onSnapshot((snapshot) => {
         const skills = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        this.setState({ skill_framework: skills, loaded: true });
+        this.setState({ skill_framework: skills });
       });
     await db
-      .collection("skills")
+      .collection(COLLECTION_SKILLS)
       .where("type", "==", "library")
       .onSnapshot((snapshot) => {
         const skills = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        this.setState({ skill_library: skills, loaded: true });
+        this.setState({ skill_library: skills });
       });
     await db
-      .collection("skills")
+      .collection(COLLECTION_SKILLS)
       .where("type", "==", "os")
       .onSnapshot((snapshot) => {
         const skills = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        this.setState({ skill_os: skills, loaded: true });
+        this.setState({ skill_os: skills });
       });
     await db
-      .collection("skills")
+      .collection(COLLECTION_SKILLS)
       .where("type", "==", "technical")
       .onSnapshot((snapshot) => {
         const skills = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        this.setState({ skill_technical: skills, loaded: true });
+        this.setState({ skill_technical: skills });
       });
 
     await db
-      .collection("skills")
+      .collection(COLLECTION_SKILLS)
       .where("type", "==", "tools")
       .onSnapshot((snapshot) => {
         const skills = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        this.setState({ skill_tools: skills, loaded: true });
+        this.setState({ skill_tools: skills });
       });
   }
   render() {
@@ -213,18 +219,17 @@ class App extends Component {
           <Profile data={profile} />
           <Projects
             title="Client Projects"
-            subtitle="insert subtitle here"
+            subtitle="* Projects shown are displayed with persmission from the original owners"
             data={projects_client}
+            getType="client"
           />
           <Projects
             title="Personal Projects"
-            subtitle="insert second subtitle here"
+            subtitle="* Some silly projects I do in my spare time"
             data={projects_personal}
+            getType="personal"
           />
-          {skillArray &&
-            skillArray.map(({ title, data }, index) => {
-              return <Skills key={index} title={title} data={data} />;
-            })}
+          <Skills skillData={skillArray} />
           <Work data={work} />
           <Education data={education} />
         </div>

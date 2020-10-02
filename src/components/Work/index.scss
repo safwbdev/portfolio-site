@@ -1,0 +1,79 @@
+.work {
+  &-img {
+    width: 4em !important;
+    height: 4em !important;
+    margin-right: 1em;
+    border-radius: 50%;
+    box-shadow: 1px 1px 6px grey;
+  }
+  &-content {
+    display: flex !important;
+    /* align-items: center; */
+  }
+  &-box {
+    .MuiCard-root {
+      background: transparent;
+      color: #ffffff;
+    }
+  }
+}
+
+.skill,
+.work,
+.education {
+  &-section {
+    padding: 2em 0;
+  }
+}
+.work-section {
+  padding: 0;
+  background-attachment: fixed;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  .company {
+    font-weight: bold !important;
+  }
+  .desc-list {
+    padding-inline-start: 1em;
+    line-height: 1.5em;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .work-box {
+    .MuiCard-root {
+      background: #000000;
+      width: 95%;
+    }
+  }
+  .work {
+    &-content {
+      display: block !important;
+      text-align: center !important;
+    }
+    &-img {
+      margin: unset !important;
+      text-align: center !important;
+      width: 50% !important;
+      height: unset !important;
+      margin-bottom: 10px !important;
+    }
+  }
+}
+.work-slider {
+  .slick-slider {
+    width: 100%;
+    .slick-slide {
+      img {
+        display: inline !important;
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .work {
+    &-slider.MuiGrid-container {
+      padding: 0 0 0 15px;
+    }
+  }
+}

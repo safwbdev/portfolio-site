@@ -1,22 +1,3 @@
-// import React from "react";
-// function Profile({
-//   data: { github, linkedin, image, desc, email, location, name, role, tel },
-// }) {
-//   return (
-//     <div>
-//       <h1>Profile</h1>
-//       <p>{github}</p>
-//       <p>{linkedin}</p>
-//       <p>{desc}</p>
-//       <p>{email}</p>
-//       <p>{location}</p>
-//       <p>{name}</p>
-//       <p>{role}</p>
-//       <p>{tel}</p>
-//     </div>
-//   );
-// }
-// export default Profile;
 import React from "react";
 import "./index.scss";
 import desc_image from "./../../assets/desc_bg.jpeg";
@@ -32,25 +13,8 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import EmailIcon from "@material-ui/icons/Email";
 import PhoneIcon from "@material-ui/icons/Phone";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import { motion } from "framer-motion";
 
-var descbgStyle = { backgroundImage: `url(${desc_image})` };
-const containerVariants = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-
-    transition: {
-      delay: 1,
-    },
-  },
-  exit: {
-    x: "-100vw",
-    transition: { ease: "easeInOut" },
-  },
-};
+const descbgStyle = { backgroundImage: `url(${desc_image})` };
 
 const ProfileSection = ({ data }) => {
   const getProfile = ({
@@ -66,126 +30,72 @@ const ProfileSection = ({ data }) => {
     return (
       <>
         <Grid item xs={12} sm={12} md={3} className="profile-image">
-          <motion.img
-            src={image}
-            alt=""
-            className="profile"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            // transition={{ delay: 0.5 }}
-          />
+          <img src={image} alt="" className="profile" />
         </Grid>
         <Grid item xs={12} sm={12} md={9}>
           <Grid container className="detail-links">
             <Grid item xs={12} className="titles">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
-                <Typography variant="h2">{name}</Typography>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-              >
-                <Typography variant="h3">{role}</Typography>
-              </motion.div>
+              <Typography variant="h2">{name}</Typography>
+
+              <Typography variant="h3">{role}</Typography>
+
               <Hidden smUp>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.9 }}
-                >
-                  <Typography variant="h6">
-                    <IconButton>
-                      <LocationOnIcon />
-                    </IconButton>
-                    {location}
-                  </Typography>
-                </motion.div>
+                <Typography variant="h6">
+                  <IconButton>
+                    <LocationOnIcon />
+                  </IconButton>
+                  {location}
+                </Typography>
               </Hidden>
             </Grid>
             <Grid item xs={3} sm={6} md={6}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.9 }}
-              >
-                <a href={tel}>
-                  <Typography variant="h6">
-                    <IconButton className="link-btn">
-                      <PhoneIcon />
-                    </IconButton>
-                    <Hidden only="xs">{tel}</Hidden>
-                  </Typography>
-                </a>
-              </motion.div>
+              <a href={tel}>
+                <Typography variant="h6">
+                  <IconButton className="link-btn">
+                    <PhoneIcon />
+                  </IconButton>
+                  <Hidden only="xs">{tel}</Hidden>
+                </Typography>
+              </a>
             </Grid>
             <Grid item xs={3} sm={6} md={6}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.9 }}
-              >
-                <a href={"mailto:" + email}>
-                  <Typography variant="h6">
-                    <IconButton className="link-btn">
-                      <EmailIcon />
-                    </IconButton>
-                    <Hidden only="xs">{email}</Hidden>
-                  </Typography>
-                </a>
-              </motion.div>
+              <a href={"mailto:" + email}>
+                <Typography variant="h6">
+                  <IconButton className="link-btn">
+                    <EmailIcon />
+                  </IconButton>
+                  <Hidden only="xs">{email}</Hidden>
+                </Typography>
+              </a>
             </Grid>
             <Grid item xs={3} sm={6} md={6}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.9 }}
-              >
-                <a href={github} target="_blank" rel="noopener noreferrer">
-                  <Typography variant="h6">
-                    <IconButton className="link-btn">
-                      <GitHubIcon />
-                    </IconButton>
-                    <Hidden only="xs">Check Out My Github</Hidden>
-                  </Typography>
-                </a>
-              </motion.div>
+              <a href={github} target="_blank" rel="noopener noreferrer">
+                <Typography variant="h6">
+                  <IconButton className="link-btn">
+                    <GitHubIcon />
+                  </IconButton>
+                  <Hidden only="xs">Check Out My Github</Hidden>
+                </Typography>
+              </a>
             </Grid>
             <Grid item xs={3} sm={6} md={6}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.9 }}
-              >
-                <a href={linkedin} target="_blank" rel="noopener noreferrer">
-                  <Typography variant="h6">
-                    <IconButton className="link-btn">
-                      <LinkedInIcon />
-                    </IconButton>
-                    <Hidden only="xs">Visit My LinkedIn</Hidden>
-                  </Typography>
-                </a>
-              </motion.div>
+              <a href={linkedin} target="_blank" rel="noopener noreferrer">
+                <Typography variant="h6">
+                  <IconButton className="link-btn">
+                    <LinkedInIcon />
+                  </IconButton>
+                  <Hidden only="xs">Visit My LinkedIn</Hidden>
+                </Typography>
+              </a>
             </Grid>
             <Hidden only="xs">
               <Grid item xs={12} sm={12} md={12} className="location">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.9 }}
-                >
-                  <Typography variant="h6">
-                    <IconButton>
-                      <LocationOnIcon />
-                    </IconButton>
-                    {location}
-                  </Typography>
-                </motion.div>
+                <Typography variant="h6">
+                  <IconButton>
+                    <LocationOnIcon />
+                  </IconButton>
+                  {location}
+                </Typography>
               </Grid>
             </Hidden>
           </Grid>
@@ -208,29 +118,12 @@ const ProfileSection = ({ data }) => {
           {data ? getProfile(data) : null}
         </Grid>
       </Container>
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
-        <Grid
-          container
-          spacing={0}
-          className="desc-section"
-          style={descbgStyle}
-        >
-          <Container maxWidth="lg">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.5 }}
-            >
-              {data ? getDesc(data) : "Loading ..."}
-            </motion.div>
-          </Container>
-        </Grid>
-      </motion.div>
+
+      <Grid container spacing={0} className="desc-section" style={descbgStyle}>
+        <Container maxWidth="lg">
+          {data ? getDesc(data) : "Loading ..."}
+        </Container>
+      </Grid>
     </div>
   );
 };
