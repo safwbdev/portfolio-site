@@ -17,6 +17,7 @@ import {
   PROJECT_DEMO,
   PROJECT_GITHUB,
 } from "../../constants/lang";
+import { TYPE_PERSONAL } from "../../constants/types";
 
 const useStyles = makeStyles({
   root: {
@@ -89,7 +90,7 @@ function ProjectBox({
               {/* <IconButton className="icon-link"> */}
               <LaunchIcon className={classes.iconLink} />
               {/* </IconButton> */}
-              {getType === "personal" ? PROJECT_DEMO : PROJECT_VISIT}
+              {getType === TYPE_PERSONAL ? PROJECT_DEMO : PROJECT_VISIT}
             </Button>
           </a>
         ) : null}

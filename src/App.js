@@ -16,6 +16,19 @@ import {
   COLLECTION_SKILLS,
 } from "./constants/collections";
 import {
+  TYPE_CLIENT,
+  TYPE_PERSONAL,
+  TYPE_ESSENTIAL,
+  TYPE_CMS,
+  TYPE_OS,
+  TYPE_TOOL,
+  TYPE_DB,
+  TYPE_DESIGN,
+  TYPE_FRAMEWORK,
+  TYPE_LIBRARY,
+  TYPE_TECHNICAL,
+} from "./constants/types";
+import {
   PROJECT_CLIENT_TITLE,
   PROJECT_CLIENT_SUBTITLE,
   PROJECT_PERSONAL_TITLE,
@@ -63,137 +76,135 @@ class App extends Component {
       .catch((error) => {});
 
     // PROJECTS
+    let clientProjects = [];
+    let personalProjects = [];
     await db
       .collection(COLLECTION_PROJECT)
-      .where("projectType", "==", "client")
+      .orderBy("order", "asc")
       .onSnapshot((snapshot) => {
-        const clientProjects = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        snapshot.docs.map((doc) => {
+          if (doc.data().projectType === TYPE_CLIENT) {
+            clientProjects.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          } else if (doc.data().projectType === TYPE_PERSONAL) {
+            personalProjects.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          }
+          return null;
+        });
 
-        this.setState({ projects_client: clientProjects });
+        this.setState({
+          projects_client: clientProjects,
+          projects_personal: personalProjects,
+          loaded: true,
+        });
       });
 
-    await db
-      .collection(COLLECTION_PROJECT)
-      .where("projectType", "==", "personal")
-      .onSnapshot((snapshot) => {
-        const personalProjects = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        this.setState({ projects_personal: personalProjects, loaded: true });
-      });
     // WORK EXPERIENCE
-    await db.collection(COLLECTION_WORK).onSnapshot((snapshot) => {
-      const work = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+    await db
+      .collection(COLLECTION_WORK)
+      .orderBy("startDate", "desc")
+      .onSnapshot((snapshot) => {
+        const work = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
-      this.setState({ work: work });
-    });
+        this.setState({ work: work });
+      });
     // EDUCATION
-    await db.collection(COLLECTION_EDUCATION).onSnapshot((snapshot) => {
-      const education = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      this.setState({ education: education });
-    });
+    await db
+      .collection(COLLECTION_EDUCATION)
+      .orderBy("endYear", "desc")
+      .onSnapshot((snapshot) => {
+        const education = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        this.setState({ education: education });
+      });
 
     // SKILLS
-    await db
-      .collection(COLLECTION_SKILLS)
-      .where("type", "==", "cms")
-      .onSnapshot((snapshot) => {
-        const skills = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        this.setState({ skill_cms: skills });
-      });
-    await db
-      .collection(COLLECTION_SKILLS)
-      .where("type", "==", "database")
-      .onSnapshot((snapshot) => {
-        const skills = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        this.setState({ skill_database: skills });
-      });
-    await db
-      .collection(COLLECTION_SKILLS)
-      .where("type", "==", "design")
-      .onSnapshot((snapshot) => {
-        const skills = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        this.setState({ skill_design: skills });
-      });
-    await db
-      .collection(COLLECTION_SKILLS)
-      .where("type", "==", "essential")
-      .onSnapshot((snapshot) => {
-        const skills = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        this.setState({ skill_essential: skills });
-      });
-    await db
-      .collection(COLLECTION_SKILLS)
-      .where("type", "==", "framework")
-      .onSnapshot((snapshot) => {
-        const skills = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        this.setState({ skill_framework: skills });
-      });
-    await db
-      .collection(COLLECTION_SKILLS)
-      .where("type", "==", "library")
-      .onSnapshot((snapshot) => {
-        const skills = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        this.setState({ skill_library: skills });
-      });
-    await db
-      .collection(COLLECTION_SKILLS)
-      .where("type", "==", "os")
-      .onSnapshot((snapshot) => {
-        const skills = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        this.setState({ skill_os: skills });
-      });
-    await db
-      .collection(COLLECTION_SKILLS)
-      .where("type", "==", "technical")
-      .onSnapshot((snapshot) => {
-        const skills = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        this.setState({ skill_technical: skills });
-      });
 
+    let essentialSkills = [];
+    let cmsSkills = [];
+    let osSkills = [];
+    let toolSkills = [];
+    let databaseSkills = [];
+    let designSkills = [];
+    let frameworkSkills = [];
+    let librarySkills = [];
+    let technicalSkills = [];
     await db
       .collection(COLLECTION_SKILLS)
-      .where("type", "==", "tools")
+      .orderBy("name", "asc")
       .onSnapshot((snapshot) => {
-        const skills = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        this.setState({ skill_tools: skills });
+        snapshot.docs.map((doc) => {
+          if (doc.data().type === TYPE_ESSENTIAL) {
+            essentialSkills.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          } else if (doc.data().type === TYPE_CMS) {
+            cmsSkills.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          } else if (doc.data().type === TYPE_OS) {
+            osSkills.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          } else if (doc.data().type === TYPE_TOOL) {
+            toolSkills.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          } else if (doc.data().type === TYPE_DB) {
+            databaseSkills.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          } else if (doc.data().type === TYPE_DESIGN) {
+            designSkills.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          } else if (doc.data().type === TYPE_FRAMEWORK) {
+            frameworkSkills.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          } else if (doc.data().type === TYPE_LIBRARY) {
+            librarySkills.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          } else if (doc.data().type === TYPE_TECHNICAL) {
+            technicalSkills.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          }
+          return null;
+        });
+
+        this.setState({
+          skill_essential: essentialSkills,
+          skill_cms: cmsSkills,
+          skill_database: databaseSkills,
+          skill_design: designSkills,
+          skill_framework: frameworkSkills,
+          skill_library: librarySkills,
+          skill_os: osSkills,
+          skill_technical: technicalSkills,
+          skill_tools: toolSkills,
+          loaded: true,
+        });
       });
   }
   render() {
@@ -235,13 +246,13 @@ class App extends Component {
             title={PROJECT_CLIENT_TITLE}
             subtitle={PROJECT_CLIENT_SUBTITLE}
             data={projects_client}
-            getType="client"
+            getType={TYPE_CLIENT}
           />
           <Projects
             title={PROJECT_PERSONAL_TITLE}
             subtitle={PROJECT_PERSONAL_SUBTITLE}
             data={projects_personal}
-            getType="personal"
+            getType={TYPE_PERSONAL}
           />
           <Skills skillData={skillArray} />
           <Work data={work} />

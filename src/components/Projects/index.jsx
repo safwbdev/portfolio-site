@@ -15,15 +15,16 @@ import {
   PERSONAL_PROJECT_SETTINGS,
   CLIENT_PROJECT_SETTINGS,
 } from "../../constants/sliderSettings";
+import { TYPE_CLIENT, TYPE_PERSONAL } from "../../constants/types";
 import "./index.scss";
 
 function Projects({ title, data, subtitle, getType }) {
   const newTitle =
-    getType === "personal" ? title + "(" + data.length + ")" : title;
+    getType === TYPE_PERSONAL ? title + "(" + data.length + ")" : title;
   let settings;
-  if (getType === "personal") {
+  if (getType === TYPE_PERSONAL) {
     settings = PERSONAL_PROJECT_SETTINGS;
-  } else if (getType === "client") {
+  } else if (getType === TYPE_CLIENT) {
     settings = CLIENT_PROJECT_SETTINGS;
   }
 
