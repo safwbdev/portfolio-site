@@ -71,7 +71,14 @@ function ProjectBox({
                 <>{data.name}</>
               </span>
             );
-            return <Chip key={index} size="medium" label={content}></Chip>;
+            return (
+              <Chip
+                key={index}
+                size="medium"
+                label={content}
+                className="fw-chip"
+              />
+            );
           })}
       </CardActions>
     );

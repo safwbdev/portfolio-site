@@ -1,32 +1,39 @@
-.project-slider {
-  .slick-slider {
-    width: 100%;
-    .slick-slide {
-      img {
-        display: inline !important;
+.project {
+  &-slider {
+    .slick-slider {
+      width: 100%;
+      .slick-slide {
+        img {
+          display: inline !important;
+        }
       }
     }
   }
-}
-.project-section {
-  a {
-    text-decoration: none;
+  &-section {
+    a {
+      text-decoration: none;
+    }
   }
+}
+.fw-chip {
+  margin: 2px;
 }
 @media screen and (device-width: 480px) and (device-height: 640px) {
   .slick-slide {
     margin: 0 10px;
     background: #000000;
-    /* border-radius: 20px; */
   }
-  .project-slider .slick-slide {
-    margin: 0;
-    background: transparent;
-  }
-
-  .project-section {
-    .MuiContainer-root {
-      padding: 0;
+  .project {
+    &-slider {
+      .slick-slide {
+        margin: 0;
+        background: transparent;
+      }
+    }
+    &-section {
+      .MuiContainer-root {
+        padding: 0;
+      }
     }
   }
 }
