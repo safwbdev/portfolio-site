@@ -89,3 +89,13 @@ export const WORK_SETTINGS = {
   slidesToScroll: 1,
   initialSlide: 0,
 };
+
+export const EDUCATION_SETTINGS = {
+  dots: true,
+  arrows: false,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 1.2,
+  slidesToScroll: 1,
+  initialSlide: 0,
+};
