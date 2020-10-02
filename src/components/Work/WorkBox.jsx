@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Card, CardContent, Hidden } from "@material-ui/core";
 import moment from "moment";
-// import WorkDialog from "./WorkDialog";
+import WorkDialog from "./WorkDialog";
 
 const WorkBox = ({ data }) => {
   const { image, startDate, endDate, name, location, role, desc } = data;
@@ -35,10 +35,10 @@ const WorkBox = ({ data }) => {
                 })}
               </ul>
             </Hidden>
-            {/* <Hidden smUp>
+            <Hidden smUp>
               <br />
               <WorkDialog name={name} tasks={desc} />
-            </Hidden> */}
+            </Hidden>
           </div>
         </CardContent>
       </Card>

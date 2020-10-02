@@ -12,6 +12,11 @@ import {
 } from "@material-ui/core";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LaunchIcon from "@material-ui/icons/Launch";
+import {
+  PROJECT_VISIT,
+  PROJECT_DEMO,
+  PROJECT_GITHUB,
+} from "../../constants/lang";
 
 const useStyles = makeStyles({
   root: {
@@ -44,17 +49,14 @@ const useStyles = makeStyles({
   },
 });
 function ProjectBox({
-  data: { image, title, desc, skillType, demo, github, getType },
+  getType,
+  data: { image, title, desc, skillType, demo, github },
 }) {
   const classes = useStyles();
-
+  // console.log(data);
   return (
     <Card className={classes.root}>
-      <CardMedia
-        className={classes.media}
-        image={image}
-        title="Contemplative Reptile"
-      />
+      <CardMedia className={classes.media} image={image} title="" />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
           {title}
@@ -87,7 +89,7 @@ function ProjectBox({
               {/* <IconButton className="icon-link"> */}
               <LaunchIcon className={classes.iconLink} />
               {/* </IconButton> */}
-              {getType === "personal" ? "Demo" : "Visit Site"}
+              {getType === "personal" ? PROJECT_DEMO : PROJECT_VISIT}
             </Button>
           </a>
         ) : null}
@@ -102,7 +104,7 @@ function ProjectBox({
               {/* <IconButton className="icon-link"> */}
               <GitHubIcon className={classes.iconLink} />
               {/* </IconButton> */}
-              Github
+              {PROJECT_GITHUB}
             </Button>
           </a>
         ) : null}

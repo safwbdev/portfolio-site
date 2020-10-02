@@ -15,7 +15,21 @@ import {
   COLLECTION_EDUCATION,
   COLLECTION_SKILLS,
 } from "./constants/collections";
-
+import {
+  PROJECT_CLIENT_TITLE,
+  PROJECT_CLIENT_SUBTITLE,
+  PROJECT_PERSONAL_TITLE,
+  PROJECT_PERSONAL_SUBTITLE,
+  SKILL_ESSENTIAL,
+  SKILL_TECHNICAL,
+  SKILL_FRAMEWORKS,
+  SKILL_LIBRARIES,
+  SKILL_DATABASES,
+  SKILL_CMS,
+  SKILL_OS,
+  SKILL_TOOLS,
+  SKILL_DESIGN,
+} from "./constants/lang";
 class App extends Component {
   constructor() {
     super();
@@ -202,15 +216,15 @@ class App extends Component {
     } = this.state;
 
     const skillArray = [
-      { title: "Essentials", data: skill_essential },
-      { title: "Technical", data: skill_technical },
-      { title: "Frameworks", data: skill_framework },
-      { title: "Libraries", data: skill_library },
-      { title: "Database", data: skill_database },
-      { title: "Content Management Systems", data: skill_cms },
-      { title: "Operating Systems", data: skill_os },
-      { title: "Tools", data: skill_tools },
-      { title: "Design", data: skill_design },
+      { title: SKILL_ESSENTIAL, data: skill_essential },
+      { title: SKILL_TECHNICAL, data: skill_technical },
+      { title: SKILL_FRAMEWORKS, data: skill_framework },
+      { title: SKILL_LIBRARIES, data: skill_library },
+      { title: SKILL_DATABASES, data: skill_database },
+      { title: SKILL_CMS, data: skill_cms },
+      { title: SKILL_OS, data: skill_os },
+      { title: SKILL_TOOLS, data: skill_tools },
+      { title: SKILL_DESIGN, data: skill_design },
     ];
 
     if (loaded) {
@@ -218,14 +232,14 @@ class App extends Component {
         <div className="App">
           <Profile data={profile} />
           <Projects
-            title="Client Projects"
-            subtitle="* Projects shown are displayed with persmission from the original owners"
+            title={PROJECT_CLIENT_TITLE}
+            subtitle={PROJECT_CLIENT_SUBTITLE}
             data={projects_client}
             getType="client"
           />
           <Projects
-            title="Personal Projects"
-            subtitle="* Some silly projects I do in my spare time"
+            title={PROJECT_PERSONAL_TITLE}
+            subtitle={PROJECT_PERSONAL_SUBTITLE}
             data={projects_personal}
             getType="personal"
           />

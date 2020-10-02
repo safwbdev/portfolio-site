@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import EducationBox from "./EducationBox";
 import "./index.scss";
 import { EDUCATION_SETTINGS } from "../../constants/sliderSettings";
+import { EDUCATION_TITLE } from "../../constants/lang";
 
 function Educations({ title, data }) {
   const EducationList = (education) => {
@@ -21,7 +22,7 @@ function Educations({ title, data }) {
       </>
     );
   };
-  // NOT IN THE RIGHT ORDER
+  // FIX THIS = NOT IN THE RIGHT ORDER
   const EducationSlider = (education) => {
     return (
       <Slider {...EDUCATION_SETTINGS}>
@@ -37,7 +38,7 @@ function Educations({ title, data }) {
     <div className="education-section">
       <Grid item xs={12} className="skill-box">
         <Typography variant="h4" component="h4">
-          Education
+          {EDUCATION_TITLE}
         </Typography>
       </Grid>
       <Hidden only="xs">

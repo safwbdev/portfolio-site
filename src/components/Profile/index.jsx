@@ -13,10 +13,15 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import EmailIcon from "@material-ui/icons/Email";
 import PhoneIcon from "@material-ui/icons/Phone";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import {
+  PROFILE_GITHUB,
+  PROFILE_LINKEDIN,
+  PROFILE_LOADING,
+} from "../../constants/lang";
 
 const descbgStyle = { backgroundImage: `url(${desc_image})` };
 
-const ProfileSection = ({ data }) => {
+function ProfileSection({ data }) {
   const getProfile = ({
     email,
     github,
@@ -74,7 +79,7 @@ const ProfileSection = ({ data }) => {
                   <IconButton className="link-btn">
                     <GitHubIcon />
                   </IconButton>
-                  <Hidden only="xs">Check Out My Github</Hidden>
+                  <Hidden only="xs">{PROFILE_GITHUB}</Hidden>
                 </Typography>
               </a>
             </Grid>
@@ -84,7 +89,7 @@ const ProfileSection = ({ data }) => {
                   <IconButton className="link-btn">
                     <LinkedInIcon />
                   </IconButton>
-                  <Hidden only="xs">Visit My LinkedIn</Hidden>
+                  <Hidden only="xs">{PROFILE_LINKEDIN}</Hidden>
                 </Typography>
               </a>
             </Grid>
@@ -104,13 +109,13 @@ const ProfileSection = ({ data }) => {
     );
   };
 
-  const getDesc = ({ desc }) => {
+  function getDesc({ desc }) {
     return (
       <Grid item xs={12}>
         <Typography variant="h6">{desc}</Typography>
       </Grid>
     );
-  };
+  }
   return (
     <div className="intro-section">
       <Container maxWidth="lg" className="profile-row">
@@ -121,11 +126,11 @@ const ProfileSection = ({ data }) => {
 
       <Grid container spacing={0} className="desc-section" style={descbgStyle}>
         <Container maxWidth="lg">
-          {data ? getDesc(data) : "Loading ..."}
+          {data ? getDesc(data) : PROFILE_LOADING}
         </Container>
       </Grid>
     </div>
   );
-};
+}
 
 export default ProfileSection;

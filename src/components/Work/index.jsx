@@ -6,6 +6,7 @@ import { Grid, Typography, Hidden, Container } from "@material-ui/core";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { WORK_TITLE } from "../../constants/lang";
 
 function Work({ title, data }) {
   const WorkList = (work) => {
@@ -38,7 +39,7 @@ function Work({ title, data }) {
     <div className="work-section">
       <Grid item xs={12} className="skill-box">
         <Typography variant="h4" component="h4">
-          Work History
+          {WORK_TITLE}
         </Typography>
       </Grid>
       <Hidden only="xs">

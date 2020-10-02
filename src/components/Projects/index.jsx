@@ -20,7 +20,6 @@ import "./index.scss";
 function Projects({ title, data, subtitle, getType }) {
   const newTitle =
     getType === "personal" ? title + "(" + data.length + ")" : title;
-
   let settings;
   if (getType === "personal") {
     settings = PERSONAL_PROJECT_SETTINGS;
@@ -29,6 +28,7 @@ function Projects({ title, data, subtitle, getType }) {
   }
 
   const ProjectSlider = (projectData) => {
+    // console.log(getType);
     return (
       <Slider {...settings}>
         {projectData &&
