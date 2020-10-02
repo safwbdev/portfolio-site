@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
-import { DialogContent } from "@material-ui/core";
+import { DialogActions, DialogContent } from "@material-ui/core";
+import { WORK_TASKS, WORK_TASK_BTN, WORK_CLOSE } from "../../constants/lang";
 
 // FIX THIS
 function SimpleDialog(props) {
@@ -16,12 +17,12 @@ function SimpleDialog(props) {
   return (
     <Dialog
       onClose={handleClose}
-      aria-labelledby="simple-dialog-title"
+      aria-labelledby="title"
       className="task-dialogbox"
       open={open}
     >
-      <DialogTitle id="simple-dialog-title">
-        Tasks at
+      <DialogTitle id="title" className="title">
+        {WORK_TASKS}
         <br />
         {name}
       </DialogTitle>
@@ -32,6 +33,9 @@ function SimpleDialog(props) {
           })}
         </ul>
       </DialogContent>
+      <DialogActions className="actions">
+        <Button onClick={handleClose}>{WORK_CLOSE}</Button>
+      </DialogActions>
     </Dialog>
   );
 }
@@ -39,7 +43,7 @@ function SimpleDialog(props) {
 SimpleDialog.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired,
+  selectedValue: PropTypes.bool.isRequired,
 };
 
 const SimpleDialogDemo = ({ name, tasks }) => {
@@ -62,7 +66,7 @@ const SimpleDialogDemo = ({ name, tasks }) => {
         className="task-button"
         onClick={handleClickOpen}
       >
-        View Tasks
+        {WORK_TASK_BTN}
       </Button>
       <SimpleDialog
         name={name}

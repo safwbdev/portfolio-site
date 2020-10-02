@@ -22,7 +22,6 @@ function Educations({ title, data }) {
       </>
     );
   };
-  // FIX THIS = NOT IN THE RIGHT ORDER
   const EducationSlider = (education) => {
     return (
       <Slider {...EDUCATION_SETTINGS}>

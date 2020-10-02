@@ -1,11 +1,11 @@
 import React from "react";
 import "./index.scss";
-import { WORK_SETTINGS } from "../../constants/sliderSettings";
 import WorkBox from "./WorkBox";
 import { Grid, Typography, Hidden, Container } from "@material-ui/core";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { WORK_SETTINGS } from "../../constants/sliderSettings";
 import { WORK_TITLE } from "../../constants/lang";
 
 function Work({ title, data }) {

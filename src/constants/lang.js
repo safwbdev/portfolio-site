@@ -25,7 +25,12 @@ export const SKILL_CMS = "Content Management Systems";
 export const SKILL_OS = "Operating Systems";
 export const SKILL_TOOLS = "Tools";
 export const SKILL_DESIGN = "Design";
+
 // WORK
 export const WORK_TITLE = "Work History";
+export const WORK_TASKS = "Tasks at";
+export const WORK_TASK_BTN = "View Tasks";
+export const WORK_CLOSE = "Close";
+
 // EDUCATION
 export const EDUCATION_TITLE = "Education";

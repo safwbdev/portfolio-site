@@ -17,19 +17,24 @@
     }
   }
 }
+.task-button {
+  border: 1px solid #ffffff !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
 .education {
   &-section {
     padding: 2em 0;
   }
 }
 @media only screen and (max-width: 480px) {
-  .edu-box {
-    .MuiCard-root {
-      background: #000000;
-      width: 95%;
-    }
-  }
   .edu {
+    &-box {
+      .MuiCard-root {
+        background: #000000;
+        width: 95%;
+      }
+    }
     &-content {
       display: block !important;
       text-align: center !important;
@@ -40,6 +45,11 @@
       width: 50% !important;
       height: unset !important;
       margin-bottom: 10px !important;
+    }
+    &-slider {
+      &.MuiGrid-container {
+        padding: 0 0 0 15px;
+      }
     }
   }
 }
@@ -53,17 +63,4 @@
       }
     }
   }
-}
-
-@media screen and (max-width: 480px) {
-  .edu {
-    &-slider.MuiGrid-container {
-      padding: 0 0 0 15px;
-    }
-  }
-}
-.task-button {
-  border: 1px solid #ffffff !important;
-  color: #ffffff !important;
-  font-weight: 700 !important;
 }

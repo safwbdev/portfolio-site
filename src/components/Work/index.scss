@@ -77,3 +77,26 @@
     }
   }
 }
+.task-dialogbox {
+  .title {
+    text-align: center;
+  }
+  .MuiDialogContent-root {
+    padding: 8px 10px;
+    line-height: 1.5em;
+
+    .desc-list {
+      margin: 0;
+    }
+  }
+  .actions {
+    justify-content: center;
+
+    button {
+      width: 100%;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      text-align: center;
+    }
+  }
+}

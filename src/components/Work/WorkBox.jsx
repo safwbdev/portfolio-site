@@ -9,7 +9,6 @@ const WorkBox = ({ data }) => {
     const d = new Date(date);
     const newDate = moment(d).format("MMM YYYY");
     return newDate;
-    // "date";
   };
   return (
     <div className="work-box">
