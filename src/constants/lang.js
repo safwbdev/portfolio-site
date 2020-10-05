@@ -2,6 +2,7 @@
 export const PROFILE_LOADING = "Loading ...";
 export const PROFILE_GITHUB = "Check Out My Github";
 export const PROFILE_LINKEDIN = "Check Out My Github";
+export const PROFILE_DOWNLOAD = "Download CV";
 
 // PROJECTS
 export const PROJECT_CLIENT_TITLE = "Client Projects";
