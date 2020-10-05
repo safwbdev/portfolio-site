@@ -240,6 +240,7 @@ class App extends Component {
       { title: SKILL_DESIGN, data: skill_design },
     ];
 
+    // RENDER
     if (loaded) {
       return (
         <div className="App">
