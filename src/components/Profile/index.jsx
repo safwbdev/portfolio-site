@@ -8,6 +8,7 @@ import {
   IconButton,
   Hidden,
   Container,
+  Button,
 } from "@material-ui/core";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
@@ -103,12 +104,24 @@ function ProfileSection({ data }) {
             </Hidden>
             <Grid item xs={12} sm={6} md={6}>
               <a href={PDFfile} download={fileName}>
-                <Typography variant="h6">
-                  <IconButton className="link-btn">
-                    <CloudDownloadIcon />
-                  </IconButton>
-                  {PROFILE_DOWNLOAD}
-                </Typography>
+                <Hidden only="xs">
+                  <Typography variant="h6">
+                    <IconButton className="link-btn">
+                      <CloudDownloadIcon />
+                    </IconButton>
+                    {PROFILE_DOWNLOAD}
+                  </Typography>
+                </Hidden>
+                <Hidden smUp>
+                  <Button
+                    variant="contained"
+                    className="dl-btn"
+                    startIcon={<CloudDownloadIcon />}
+                  >
+                    {" "}
+                    {PROFILE_DOWNLOAD}
+                  </Button>
+                </Hidden>
               </a>
             </Grid>
           </Grid>
