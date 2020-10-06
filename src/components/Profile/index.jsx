@@ -40,9 +40,7 @@ function ProfileSection({ data }) {
           <Grid container className="detail-links">
             <Grid item xs={12} className="titles">
               <Typography variant="h2">{name}</Typography>
-
               <Typography variant="h3">{role}</Typography>
-
               <Hidden smUp>
                 <Typography variant="h6">
                   <IconButton>
@@ -53,7 +51,7 @@ function ProfileSection({ data }) {
               </Hidden>
             </Grid>
             <Grid item xs={3} sm={6} md={6}>
-              <a href={tel}>
+              <a href={`tel:${tel}`}>
                 <Typography variant="h6">
                   <IconButton className="link-btn">
                     <PhoneIcon />
@@ -130,13 +128,13 @@ function ProfileSection({ data }) {
     );
   };
 
-  function ViewDescription({ data: { desc } }) {
+  const ViewDescription = ({ data: { desc } }) => {
     return (
       <Grid item xs={12}>
         <Typography variant="h6">{desc}</Typography>
       </Grid>
     );
-  }
+  };
   return (
     <div className="intro-section">
       <Container maxWidth="lg" className="profile-row">

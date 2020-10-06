@@ -6,6 +6,7 @@ import Projects from "./components/Projects/";
 import Skills from "./components/Skills/";
 import Work from "./components/Work/";
 import Education from "./components/Education/";
+import Contact from "./components/Contact/";
 import { CircularProgress } from "@material-ui/core/";
 import {
   COLLECTION_PROFILE,
@@ -260,6 +261,7 @@ class App extends Component {
           <Skills skillData={skillArray} />
           <Work data={work} />
           <Education data={education} />
+          <Contact data={profile} />
         </div>
       );
     } else {

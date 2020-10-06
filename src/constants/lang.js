@@ -1,8 +1,10 @@
 // PROFILE
 export const PROFILE_LOADING = "Loading ...";
 export const PROFILE_GITHUB = "Check Out My Github";
-export const PROFILE_LINKEDIN = "Check Out My Github";
+export const PROFILE_LINKEDIN = "Visit Out My LinkedIn";
+export const PROFILE_LINKEDIN_2 = "See Me On LinkedIn";
 export const PROFILE_DOWNLOAD = "Download CV";
+export const PROFILE_CONTACT = "Let's keep in touch!";
 
 // PROJECTS
 export const PROJECT_CLIENT_TITLE = "Client Projects";
