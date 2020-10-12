@@ -8,37 +8,30 @@ import {
   HEADER_EDUCATION,
   HEADER_CONTACT,
 } from "../../constants/lang";
+
+const links = [
+  { url: "#about", label: HEADER_ABOUT },
+  { url: "#portfolio", label: HEADER_PORTFOLIO },
+  { url: "#skills", label: HEADER_SKILLS },
+  { url: "#experience", label: HEADER_EXPERIENCE },
+  { url: "#education", label: HEADER_EDUCATION },
+  { url: "#contact", label: HEADER_CONTACT },
+];
 const Index = () => {
   return (
     <header>
       <div className="brand">
         <a href="/">{HEADER_BRAND}</a>
       </div>
-
       <ul className="nav-links">
-        <li className="nav-link">
-          <a href="#about">{HEADER_ABOUT}</a>
-        </li>
-
-        <li className="nav-link">
-          <a href="#portfolio">{HEADER_PORTFOLIO}</a>
-        </li>
-
-        <li className="nav-link">
-          <a href="#skills">{HEADER_SKILLS}</a>
-        </li>
-
-        <li className="nav-link">
-          <a href="#experience">{HEADER_EXPERIENCE}</a>
-        </li>
-
-        <li className="nav-link">
-          <a href="#education">{HEADER_EDUCATION}</a>
-        </li>
-
-        <li className="nav-link">
-          <a href="#contact">{HEADER_CONTACT}</a>
-        </li>
+        {links &&
+          links.map((link, index) => {
+            return (
+              <li className="nav-link" key={index}>
+                <a href={link.url}>{link.label}</a>
+              </li>
+            );
+          })}
       </ul>
 
       <div className="mobile-nav">
@@ -47,25 +40,14 @@ const Index = () => {
         </button>
 
         <ul className="mobile-nav-links">
-          <li className="nav-link">
-            <a href="#portfolio">{HEADER_PORTFOLIO}</a>
-          </li>
-
-          <li className="nav-link">
-            <a href="#skills">{HEADER_SKILLS}</a>
-          </li>
-
-          <li className="nav-link">
-            <a href="#experience">{HEADER_EXPERIENCE}</a>
-          </li>
-
-          <li className="nav-link">
-            <a href="#education">{HEADER_EDUCATION}</a>
-          </li>
-
-          <li className="nav-link">
-            <a href="#contact">{HEADER_CONTACT}</a>
-          </li>
+          {links &&
+            links.map((link, index) => {
+              return (
+                <li className="nav-link" key={index}>
+                  <a href={link.url}>{link.label}</a>
+                </li>
+              );
+            })}
         </ul>
       </div>
     </header>
