@@ -83,7 +83,6 @@ export const index = ({ data, getType, title, subtitle }) => {
     );
   };
 
-  console.log(data);
   return (
     <>
       <div className="nav-section" id="education">

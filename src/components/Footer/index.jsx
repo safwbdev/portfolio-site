@@ -1,40 +1,12 @@
 import React from "react";
-
-export const index = () => {
+import Social from "../Social";
+export const index = ({ data }) => {
   return (
     <footer>
       <div className="container">
         <div className="inner-content">
-          <div className="left-content">&copy; Stefaan Ariz Fangman</div>
-          <div className="social-icons">
-            <ul>
-              <li>
-                <a href="/">
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li>
-                <a href="/">
-                  <i className="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li>
-                <a href="/">
-                  <i className="fab fa-instagram"></i>
-                </a>
-              </li>
-              <li>
-                <a href="/">
-                  <i className="fab fa-linkedin"></i>
-                </a>
-              </li>
-              <li>
-                <a href="/">
-                  <i className="fab fa-github"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
+          <div className="left-content">&copy; {data.name}</div>
+          <Social data={data} />
         </div>
       </div>
     </footer>

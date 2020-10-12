@@ -1,9 +1,20 @@
 import React from "react";
 import desc_image from "./../../assets/images/desc_bg.jpeg";
 import "./index.scss";
+import Social from "../Social/";
 
 const descbgStyle = { backgroundImage: `url(${desc_image})` };
+// const socialLinks = [
+//   { icon: "fab fa-facebook-f", url: "/" },
 
+//   { icon: "fab fa-twitter", url: "/" },
+
+//   { icon: "fab fa-instagram", url: "/" },
+
+//   { icon: "fab fa-linkedin", url: "/" },
+
+//   { icon: "fab fa-github", url: "/" },
+// ];
 export const index = ({ data }) => {
   // console.log(data);
   return (
@@ -13,35 +24,7 @@ export const index = ({ data }) => {
           <h1>{data.name}</h1>
           <h2>{data.role}</h2>
         </div>
-        <div className="social-icons">
-          <ul>
-            <li>
-              <a href="/">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/">
-                <i className="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/">
-                <i className="fab fa-instagram"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/">
-                <i className="fab fa-linkedin"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/">
-                <i className="fab fa-github"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
+        <Social data={data} />
       </section>
       <section className="nav-section" id="about">
         <div className="container">
@@ -63,35 +46,7 @@ export const index = ({ data }) => {
                     Download CV
                   </a>
                 </div>
-                <div className="social-icons">
-                  <ul>
-                    <li>
-                      <a href="/">
-                        <i className="fab fa-facebook-f"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/">
-                        <i className="fab fa-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/">
-                        <i className="fab fa-instagram"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/">
-                        <i className="fab fa-linkedin"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/">
-                        <i className="fab fa-github"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                <Social data={data} />
               </div>
             </div>
           </div>

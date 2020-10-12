@@ -267,7 +267,7 @@ class App extends Component {
           <Work data={work} />
           <Education data={education} />
           <Contact data={profile} />
-          <Footer />
+          <Footer data={profile} />
         </div>
       );
     } else {
