@@ -4,18 +4,18 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { WORK_SETTINGS } from "../../constants/sliderSettings";
-import { WORK_TITLE, WORK_TASK_BTN } from "../../constants/lang";
+import { EDUCATION_TITLE, WORK_TASK_BTN } from "../../constants/lang";
 
 export const index = ({ data, getType, title, subtitle }) => {
   let settings = WORK_SETTINGS;
 
-  const WorkDesktop = () => {
+  const EduDesktop = () => {
     return (
-      <div className="work-grid">
+      <div className="edu-grid">
         {data &&
           data.map((project, index) => {
             return (
-              <div className="work-item" key={index}>
+              <div className="edu-item" key={index}>
                 <div className="image-side">
                   <div className="image-wrapper">
                     <img src={project.image} alt="" />
@@ -24,11 +24,10 @@ export const index = ({ data, getType, title, subtitle }) => {
                 <div className="detail-side">
                   <div className="title-wrapper">
                     <div className="title">
-                      <h2 className="role">{project.role}</h2>
-                      <h2 className="company">{project.name}</h2>
-                      <h2 className="duration">
-                        {project.startDate} -{project.endDate}
+                      <h2 className="yearField">
+                        {project.endYear} <span>|</span> {project.field}
                       </h2>
+                      <h2 className="institute">{project.name}</h2>
                       <h2 className="location">{project.location}</h2>
                     </div>
                   </div>
@@ -47,7 +46,7 @@ export const index = ({ data, getType, title, subtitle }) => {
       </div>
     );
   };
-  const WorkMobile = () => {
+  const EduMobile = () => {
     return (
       <div className="work-slider">
         <Slider {...settings}>
@@ -84,16 +83,16 @@ export const index = ({ data, getType, title, subtitle }) => {
     );
   };
 
+  console.log(data);
   return (
     <>
-      <div className="nav-section" id="experience">
+      <div className="nav-section" id="education">
         <div className="container">
           <div className="section-header">
-            <h3 className="heading">{WORK_TITLE}</h3>
-            <h4 className="subheading">{subtitle}</h4>
+            <h3 className="heading">{EDUCATION_TITLE}</h3>
           </div>
-          <WorkDesktop />
-          <WorkMobile />
+          <EduDesktop />
+          <EduMobile />
         </div>
       </div>
 

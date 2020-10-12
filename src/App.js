@@ -6,7 +6,7 @@ import Main from "./components/Main/";
 import Header from "./components/Header/";
 import Skills from "./components/Skills2/";
 import Work from "./components/Work2/";
-// import Education from "./components/Education/";
+import Education from "./components/Education2/";
 // import Contact from "./components/Contact/";
 // import { CircularProgress } from "@material-ui/core/";
 import {
@@ -264,8 +264,8 @@ class App extends Component {
           </section>
           <Skills skillData={skillArray} />
           <Work data={work} />
-          {/*  <Education data={education} />
-          <Contact data={profile} /> */}
+          <Education data={education} />
+          {/* <Contact data={profile} /> */}
         </div>
       );
     } else {
