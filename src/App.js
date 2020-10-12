@@ -9,7 +9,7 @@ import Work from "./components/Work2/";
 import Footer from "./components/Footer/";
 import Education from "./components/Education2/";
 import Contact from "./components/Contact/";
-// import { CircularProgress } from "@material-ui/core/";
+
 import {
   COLLECTION_PROFILE,
   COLLECTION_PROJECT,
