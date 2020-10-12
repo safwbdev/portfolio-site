@@ -5,10 +5,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { WORK_SETTINGS } from "../../constants/sliderSettings";
 import { WORK_TITLE, WORK_TASK_BTN } from "../../constants/lang";
+import moment from "moment";
 
 export const index = ({ data, getType, title, subtitle }) => {
   let settings = WORK_SETTINGS;
-
+  const getWorkDate = (date) => {
+    const d = new Date(date);
+    const newDate = moment(d).format("MMM YYYY");
+    return newDate;
+  };
   const WorkDesktop = () => {
     return (
       <div className="work-grid">
@@ -27,7 +32,8 @@ export const index = ({ data, getType, title, subtitle }) => {
                       <h2 className="role">{project.role}</h2>
                       <h2 className="company">{project.name}</h2>
                       <h2 className="duration">
-                        {project.startDate} -{project.endDate}
+                        {`${getWorkDate(project.startDate)} -
+                        ${getWorkDate(project.endDate)}`}
                       </h2>
                       <h2 className="location">{project.location}</h2>
                     </div>
@@ -64,7 +70,8 @@ export const index = ({ data, getType, title, subtitle }) => {
                         <h2 className="role">{project.role}</h2>
                         <h2 className="company">{project.name}</h2>
                         <h2 className="duration">
-                          {project.startDate} -{project.endDate}
+                          {`${getWorkDate(project.startDate)} -
+                        ${getWorkDate(project.endDate)}`}
                         </h2>
                         <h2 className="location">{project.location}</h2>
                       </div>
