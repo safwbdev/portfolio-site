@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import "./App.scss";
 import { db } from "./firebase";
-import Profile from "./components/Profile/";
-import Projects from "./components/Projects/";
-import Skills from "./components/Skills/";
-import Work from "./components/Work/";
-import Education from "./components/Education/";
-import Contact from "./components/Contact/";
-import { CircularProgress } from "@material-ui/core/";
+import Projects from "./components/Projects2/";
+import Main from "./components/Main/";
+import Header from "./components/Header/";
+import Skills from "./components/Skills2/";
+import Work from "./components/Work2/";
+// import Education from "./components/Education/";
+// import Contact from "./components/Contact/";
+// import { CircularProgress } from "@material-ui/core/";
 import {
   COLLECTION_PROFILE,
   COLLECTION_PROJECT,
@@ -245,29 +246,32 @@ class App extends Component {
     if (loaded) {
       return (
         <div className="App">
-          <Profile data={profile} />
-          <Projects
-            title={PROJECT_CLIENT_TITLE}
-            subtitle={PROJECT_CLIENT_SUBTITLE}
-            data={projects_client}
-            getType={TYPE_CLIENT}
-          />
-          <Projects
-            title={PROJECT_PERSONAL_TITLE}
-            subtitle={PROJECT_PERSONAL_SUBTITLE}
-            data={projects_personal}
-            getType={TYPE_PERSONAL}
-          />
+          <Header />
+          <Main data={profile} />
+          <section id="portfolio">
+            <Projects
+              title={PROJECT_CLIENT_TITLE}
+              subtitle={PROJECT_CLIENT_SUBTITLE}
+              data={projects_client}
+              getType={TYPE_CLIENT}
+            />
+            <Projects
+              title={PROJECT_PERSONAL_TITLE}
+              subtitle={PROJECT_PERSONAL_SUBTITLE}
+              data={projects_personal}
+              getType={TYPE_PERSONAL}
+            />
+          </section>
           <Skills skillData={skillArray} />
           <Work data={work} />
-          <Education data={education} />
-          <Contact data={profile} />
+          {/*  <Education data={education} />
+          <Contact data={profile} /> */}
         </div>
       );
     } else {
       return (
         <div className="loadscreen">
-          <CircularProgress /> <h2>{PROFILE_LOADING}</h2>
+          <h2>{PROFILE_LOADING}</h2>
         </div>
       );
     }
