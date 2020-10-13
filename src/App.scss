@@ -1,7 +1,8 @@
 :root {
   --dark: #101010;
   --grey: #252525;
-  --primary: #ff2c54;
+  // --primary: #ff2c54;
+  --primary: #8508ec;
   --light: #ffffff;
   --muted: #b7b7b7;
   --f-regular: 400;
@@ -152,7 +153,7 @@ header {
   text-transform: uppercase;
   color: var(--light);
   background: var(--primary);
-  border-radius: 999px;
+  // border-radius: 999px;
   padding: 15px 20px;
   border: 1px solid var(--primary);
   text-align: center;

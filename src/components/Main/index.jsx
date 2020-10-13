@@ -2,21 +2,12 @@ import React from "react";
 import desc_image from "./../../assets/images/desc_bg.jpeg";
 import "./index.scss";
 import Social from "../Social/";
+import PDFfile from "../../assets/resume.pdf";
 
+const cvFileName = "Stefaan_CV_092020.pdf";
 const descbgStyle = { backgroundImage: `url(${desc_image})` };
-// const socialLinks = [
-//   { icon: "fab fa-facebook-f", url: "/" },
 
-//   { icon: "fab fa-twitter", url: "/" },
-
-//   { icon: "fab fa-instagram", url: "/" },
-
-//   { icon: "fab fa-linkedin", url: "/" },
-
-//   { icon: "fab fa-github", url: "/" },
-// ];
 export const index = ({ data }) => {
-  // console.log(data);
   return (
     <>
       <section className="hero" style={descbgStyle}>
@@ -42,7 +33,13 @@ export const index = ({ data }) => {
               <hr />
               <div className="text-content-footer">
                 <div className="button-wrapper">
-                  <a href="/" className="primary-button" target="_blank">
+                  <a
+                    href={PDFfile}
+                    download={cvFileName}
+                    className="primary-button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Download CV
                   </a>
                 </div>
