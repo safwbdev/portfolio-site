@@ -4,8 +4,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { WORK_SETTINGS } from "../../constants/sliderSettings";
-import { WORK_TITLE, WORK_TASK_BTN } from "../../constants/lang";
+import { WORK_TITLE } from "../../constants/lang";
 import moment from "moment";
+import Modal from "./Modal";
 
 export const index = ({ data, getType, title, subtitle }) => {
   let settings = WORK_SETTINGS;
@@ -78,9 +79,11 @@ export const index = ({ data, getType, title, subtitle }) => {
                     </div>
 
                     <div className="task-wrapper">
-                      <button className="primary-button">
-                        {WORK_TASK_BTN}
-                      </button>
+                      <Modal
+                        id={index}
+                        name={project.name}
+                        data={project.desc}
+                      />
                     </div>
                   </div>
                 </div>
