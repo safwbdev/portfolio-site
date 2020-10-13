@@ -2,7 +2,8 @@
   --dark: #101010;
   --grey: #252525;
   // --primary: #ff2c54;
-  --primary: #8508ec;
+  // --primary: #8508ec;
+  --primary: #5093e5;
   --light: #ffffff;
   --muted: #b7b7b7;
   --f-regular: 400;
@@ -1079,4 +1080,24 @@ footer {
 .work-slider,
 .edu-slider {
   margin-bottom: 100px;
+}
+.mobile-menu {
+  .MuiMenu-paper {
+    top: 1em !important;
+    ul {
+      padding: 0;
+      border: 1px solid var(--primary);
+      background: var(--dark);
+      border-radius: 0;
+      .MuiListItem-button {
+        &:not(:last-child) {
+          border-bottom: 1px solid var(--primary);
+        }
+
+        a {
+          color: var(--light);
+        }
+      }
+    }
+  }
 }

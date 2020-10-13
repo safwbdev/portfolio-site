@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   HEADER_BRAND,
   HEADER_ABOUT,
@@ -8,6 +8,9 @@ import {
   HEADER_EDUCATION,
   HEADER_CONTACT,
 } from "../../constants/lang";
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const links = [
   { url: "#about", label: HEADER_ABOUT },
@@ -18,6 +21,14 @@ const links = [
   { url: "#contact", label: HEADER_CONTACT },
 ];
 const Index = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <header>
       <div className="brand">
@@ -35,7 +46,7 @@ const Index = () => {
       </ul>
 
       <div className="mobile-nav">
-        <button className="hamburger">
+        {/* <button className="hamburger">
           <i className="fa fa-bars"></i>
         </button>
 
@@ -48,7 +59,26 @@ const Index = () => {
                 </li>
               );
             })}
-        </ul>
+        </ul> */} <Button aria-controls="simple-menu" className="hamburger" aria-haspopup="true" onClick={handleClick}>
+          <i className="fa fa-bars"></i>
+      </Button>
+      <Menu
+        id="simple-menu"
+        className="mobile-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >{links &&
+        links.map((link, index) => {
+          return (
+            <MenuItem onClick={handleClose}>
+              <a href={link.url}>{link.label}</a>
+            </MenuItem>
+            )  }
+        )
+      }
+      </Menu>
       </div>
     </header>
   );
