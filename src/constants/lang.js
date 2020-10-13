@@ -1,3 +1,5 @@
+// TITLE
+export const WEB_TITLE = "SAFWBDEV | Web Developer";
 // PROFILE
 export const PROFILE_LOADING = "Loading ...";
 export const PROFILE_GITHUB = "Check Out My Github";

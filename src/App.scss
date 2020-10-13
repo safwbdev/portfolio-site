@@ -1101,3 +1101,28 @@ footer {
     }
   }
 }
+.comingsoon,
+.loadscreen {
+  background-color: var(--dark);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.comingsoon {
+  .title {
+    display: block;
+    h1,
+    h3 {
+      text-align: center;
+    }
+  }
+}
+.loadscreen {
+  svg {
+    color: #ffffff;
+  }
+  h2 {
+    margin-left: 0.5em;
+  }
+}

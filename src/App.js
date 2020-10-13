@@ -31,6 +31,7 @@ import {
   TYPE_TECHNICAL,
 } from "./constants/types";
 import {
+  WEB_TITLE,
   PROFILE_LOADING,
   PROJECT_CLIENT_TITLE,
   PROJECT_CLIENT_SUBTITLE,
@@ -69,6 +70,9 @@ class App extends Component {
     };
   }
   async componentDidMount() {
+    // TITLE
+    document.title = WEB_TITLE;
+
     // PROFILE
     await db
       .collection(COLLECTION_PROFILE)
