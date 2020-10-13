@@ -1,6 +1,5 @@
 import React from "react";
 import desc_image from "./../../assets/images/desc_bg.jpeg";
-import "./index.scss";
 import Social from "../Social/";
 import PDFfile from "../../assets/resume.pdf";
 
