@@ -72,7 +72,7 @@ const Index = () => {
       >{links &&
         links.map((link, index) => {
           return (
-            <MenuItem onClick={handleClose}>
+            <MenuItem key={index} onClick={handleClose}>
               <a href={link.url}>{link.label}</a>
             </MenuItem>
             )  }
