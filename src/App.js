@@ -9,7 +9,7 @@ import Work from "./components/Work2/";
 import Footer from "./components/Footer/";
 import Education from "./components/Education2/";
 import Contact from "./components/Contact/";
-
+import { motion } from "framer-motion";
 import {
   COLLECTION_PROFILE,
   COLLECTION_PROJECT,
@@ -47,6 +47,7 @@ import {
   SKILL_TOOLS,
   SKILL_DESIGN,
 } from "./constants/lang";
+import { appVariants } from "./constants/variants";
 
 class App extends Component {
   constructor() {
@@ -250,7 +251,12 @@ class App extends Component {
     // RENDER
     if (loaded) {
       return (
-        <div className="App">
+        <motion.div
+          className="App"
+          variants={appVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <Header />
           <Main data={profile} />
           <section id="portfolio">
@@ -272,7 +278,7 @@ class App extends Component {
           <Education data={education} />
           <Contact data={profile} />
           <Footer data={profile} />
-        </div>
+        </motion.div>
       );
     } else {
       return (

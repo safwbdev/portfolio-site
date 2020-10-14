@@ -2,7 +2,12 @@ import React from "react";
 import desc_image from "./../../assets/images/desc_bg.jpeg";
 import Social from "../Social";
 import PDFfile from "../../assets/resume.pdf";
-
+import { motion } from "framer-motion";
+import {
+  titleVariants,
+  subTitleVariants,
+  socialVariants1,
+} from "../../constants/variants";
 const cvFileName = "Stefaan_CV_092020.pdf";
 const descbgStyle = { backgroundImage: `url(${desc_image})` };
 
@@ -11,10 +16,28 @@ export const index = ({ data }) => {
     <>
       <section className="hero" style={descbgStyle}>
         <div className="inner-text">
-          <h1>{data.name}</h1>
-          <h2>{data.role}</h2>
+          <motion.h1
+            variants={titleVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {data.name}
+          </motion.h1>
+          <motion.h2
+            variants={subTitleVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {data.role}
+          </motion.h2>
         </div>
-        <Social data={data} />
+        <motion.span
+          variants={socialVariants1}
+          initial="hidden"
+          animate="visible"
+        >
+          <Social data={data} />
+        </motion.span>
       </section>
       <section className="nav-section" id="about">
         <div className="container">

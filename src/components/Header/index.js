@@ -1,25 +1,10 @@
 import React, { useState } from "react";
-import {
-  HEADER_BRAND,
-  HEADER_ABOUT,
-  HEADER_PORTFOLIO,
-  HEADER_SKILLS,
-  HEADER_EXPERIENCE,
-  HEADER_EDUCATION,
-  HEADER_CONTACT,
-} from "../../constants/lang";
-import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
+import { HEADER_BRAND } from "../../constants/lang";
+import { links } from "./linkData";
+import { Button, Menu, MenuItem } from "@material-ui/core";
+import { motion } from "framer-motion";
+import { headerVariants } from "../../constants/variants";
 
-const links = [
-  { url: "#about", label: HEADER_ABOUT },
-  { url: "#portfolio", label: HEADER_PORTFOLIO },
-  { url: "#skills", label: HEADER_SKILLS },
-  { url: "#experience", label: HEADER_EXPERIENCE },
-  { url: "#education", label: HEADER_EDUCATION },
-  { url: "#contact", label: HEADER_CONTACT },
-];
 const Index = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
@@ -30,7 +15,7 @@ const Index = () => {
     setAnchorEl(null);
   };
   return (
-    <header>
+    <motion.header variants={headerVariants} initial="hidden" animate="visible">
       <div className="brand">
         <a href="/">{HEADER_BRAND}</a>
       </div>
@@ -71,7 +56,7 @@ const Index = () => {
             })}
         </Menu>
       </div>
-    </header>
+    </motion.header>
   );
 };
 export default Index;
