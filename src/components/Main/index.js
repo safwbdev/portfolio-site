@@ -1,20 +1,27 @@
 import React from "react";
-import desc_image from "./../../assets/images/desc_bg.jpeg";
 import Social from "../Social";
-import PDFfile from "../../assets/resume.pdf";
 import { motion } from "framer-motion";
 import {
   titleVariants,
   subTitleVariants,
   socialVariants1,
 } from "../../constants/variants";
-const cvFileName = "Stefaan_CV_092020.pdf";
-const descbgStyle = { backgroundImage: `url(${desc_image})` };
+import {
+  CV_FILE_NAME,
+  MAIN_BACKGROUND,
+  CV_FILE_DOWNLOAD,
+} from "../../constants/assets";
+import {
+  PROFILE_TITLE,
+  PROFILE_SUBTITLE,
+  PROFILE_GREETING,
+  PROFILE_DOWNLOAD,
+} from "../../constants/lang";
 
 export const index = ({ data }) => {
   return (
     <>
-      <section className="hero" style={descbgStyle}>
+      <section className="hero" style={MAIN_BACKGROUND}>
         <div className="inner-text">
           <motion.h1
             variants={titleVariants}
@@ -42,27 +49,27 @@ export const index = ({ data }) => {
       <section className="nav-section" id="about">
         <div className="container">
           <div className="section-header">
-            <h3 className="heading">About Me</h3>
-            <h4 className="subheading">Get To Know Me</h4>
+            <h3 className="heading">{PROFILE_TITLE}</h3>
+            <h4 className="subheading">{PROFILE_SUBTITLE}</h4>
           </div>
           <div className="about-content">
             <div className="image-wrapper">
               <img src={data.image} alt="" />
             </div>
             <div className="text-content">
-              <h3 className="content-heading">Hello there</h3>
+              <h3 className="content-heading">{PROFILE_GREETING}</h3>
               <p>{data.desc}</p>
               <hr />
               <div className="text-content-footer">
                 <div className="button-wrapper">
                   <a
-                    href={PDFfile}
-                    download={cvFileName}
+                    href={CV_FILE_DOWNLOAD}
+                    download={CV_FILE_NAME}
                     className="primary-button"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Download CV
+                    {PROFILE_DOWNLOAD}
                   </a>
                 </div>
                 <Social data={data} />

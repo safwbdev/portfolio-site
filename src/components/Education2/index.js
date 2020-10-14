@@ -4,9 +4,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { WORK_SETTINGS } from "../../constants/sliderSettings";
-import { EDUCATION_TITLE, WORK_TASK_BTN } from "../../constants/lang";
+import { EDUCATION_TITLE } from "../../constants/lang";
 
-export const index = ({ data, getType, title, subtitle }) => {
+export const index = ({ data }) => {
   let settings = WORK_SETTINGS;
 
   const EduDesktop = () => {
@@ -62,17 +62,9 @@ export const index = ({ data, getType, title, subtitle }) => {
                       <div className="title">
                         <h2 className="role">{project.role}</h2>
                         <h2 className="company">{project.name}</h2>
-                        <h2 className="duration">
-                          {project.startDate} -{project.endDate}
-                        </h2>
+                        <h2 className="duration">{project.endYear}</h2>
                         <h2 className="location">{project.location}</h2>
                       </div>
-                    </div>
-
-                    <div className="task-wrapper">
-                      <button className="primary-button">
-                        {WORK_TASK_BTN}
-                      </button>
                     </div>
                   </div>
                 </div>

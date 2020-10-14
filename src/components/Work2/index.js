@@ -15,41 +15,46 @@ export const index = ({ data, getType, title, subtitle }) => {
     const newDate = moment(d).format("MMM YYYY");
     return newDate;
   };
+  const WorkBox = ({
+    data: { image, role, name, startDate, endDate, location, desc },
+  }) => {
+    return (
+      <div className="work-item">
+        <div className="image-side">
+          <div className="image-wrapper">
+            <img src={image} alt="" />
+          </div>
+        </div>
+        <div className="detail-side">
+          <div className="title-wrapper">
+            <div className="title">
+              <h2 className="role">{role}</h2>
+              <h2 className="company">{name}</h2>
+              <h2 className="duration">
+                {`${getWorkDate(startDate)} -
+            ${getWorkDate(endDate)}`}
+              </h2>
+              <h2 className="location">{location}</h2>
+            </div>
+          </div>
+          <div className="task-wrapper">
+            <ul>
+              {desc &&
+                desc.map((task, index) => {
+                  return <li key={index}>{task}</li>;
+                })}
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
+  };
   const WorkDesktop = () => {
     return (
       <div className="work-grid">
         {data &&
-          data.map((project, index) => {
-            return (
-              <div className="work-item" key={index}>
-                <div className="image-side">
-                  <div className="image-wrapper">
-                    <img src={project.image} alt="" />
-                  </div>
-                </div>
-                <div className="detail-side">
-                  <div className="title-wrapper">
-                    <div className="title">
-                      <h2 className="role">{project.role}</h2>
-                      <h2 className="company">{project.name}</h2>
-                      <h2 className="duration">
-                        {`${getWorkDate(project.startDate)} -
-                        ${getWorkDate(project.endDate)}`}
-                      </h2>
-                      <h2 className="location">{project.location}</h2>
-                    </div>
-                  </div>
-                  <div className="task-wrapper">
-                    <ul>
-                      {project.desc &&
-                        project.desc.map((task, index) => {
-                          return <li key={index}>{task}</li>;
-                        })}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            );
+          data.map((data, index) => {
+            return <WorkBox data={data} key={index} />;
           })}
       </div>
     );
@@ -59,31 +64,27 @@ export const index = ({ data, getType, title, subtitle }) => {
       <div className="work-slider">
         <Slider {...settings}>
           {data &&
-            data.map((project, index) => {
+            data.map((work, index) => {
               return (
                 <div className="work-item" key={index}>
                   <div className="image-side">
-                    <img src={project.image} alt="" />
+                    <img src={work.image} alt="" />
                   </div>
                   <div className="detail-side">
                     <div className="title-wrapper">
                       <div className="title">
-                        <h2 className="role">{project.role}</h2>
-                        <h2 className="company">{project.name}</h2>
+                        <h2 className="role">{work.role}</h2>
+                        <h2 className="company">{work.name}</h2>
                         <h2 className="duration">
-                          {`${getWorkDate(project.startDate)} -
-                        ${getWorkDate(project.endDate)}`}
+                          {`${getWorkDate(work.startDate)} -
+                        ${getWorkDate(work.endDate)}`}
                         </h2>
-                        <h2 className="location">{project.location}</h2>
+                        <h2 className="location">{work.location}</h2>
                       </div>
                     </div>
 
                     <div className="task-wrapper">
-                      <Modal
-                        id={index}
-                        name={project.name}
-                        data={project.desc}
-                      />
+                      <Modal id={index} name={work.name} data={work.desc} />
                     </div>
                   </div>
                 </div>

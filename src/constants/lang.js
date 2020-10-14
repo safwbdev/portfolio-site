@@ -8,6 +8,10 @@ export const PROFILE_LINKEDIN_2 = "See Me On LinkedIn";
 export const PROFILE_DOWNLOAD = "Download CV";
 export const PROFILE_CONTACT = "Let's keep in touch!";
 
+export const PROFILE_TITLE = "About Me";
+export const PROFILE_SUBTITLE = "Get To Know Me";
+export const PROFILE_GREETING = "Hello there";
+
 // PROJECTS
 export const PROJECT_CLIENT_TITLE = "Client Portfolio";
 export const PROJECT_CLIENT_SUBTITLE =
