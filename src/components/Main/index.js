@@ -1,6 +1,6 @@
 import React from "react";
 import desc_image from "./../../assets/images/desc_bg.jpeg";
-import Social from "../Social/";
+import Social from "../Social";
 import PDFfile from "../../assets/resume.pdf";
 
 const cvFileName = "Stefaan_CV_092020.pdf";
