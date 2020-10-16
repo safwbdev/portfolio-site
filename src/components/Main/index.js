@@ -54,7 +54,12 @@ export const index = ({ data }) => {
           </div>
           <div className="about-content">
             <div className="image-wrapper">
-              <img src={data.image} alt="" />
+              <img
+                src={data.image}
+                alt={PROFILE_SUBTITLE}
+                width="100"
+                height="100"
+              />
             </div>
             <div className="text-content">
               <h3 className="content-heading">{PROFILE_GREETING}</h3>

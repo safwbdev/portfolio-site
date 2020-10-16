@@ -13,31 +13,23 @@ export const index = ({ data }) => {
     return (
       <div className="edu-grid">
         {data &&
-          data.map((project, index) => {
+          data.map((edu, index) => {
             return (
               <div className="edu-item" key={index}>
                 <div className="image-side">
                   <div className="image-wrapper">
-                    <img src={project.image} alt="" />
+                    <img src={edu.image} alt="" width="100" height="100" />
                   </div>
                 </div>
                 <div className="detail-side">
                   <div className="title-wrapper">
                     <div className="title">
                       <h2 className="yearField">
-                        {project.endYear} <span>|</span> {project.field}
+                        {edu.endYear} <span>|</span> {edu.field}
                       </h2>
-                      <h2 className="institute">{project.name}</h2>
-                      <h2 className="location">{project.location}</h2>
+                      <h2 className="institute">{edu.name}</h2>
+                      <h2 className="location">{edu.location}</h2>
                     </div>
-                  </div>
-                  <div className="task-wrapper">
-                    <ul>
-                      {project.desc &&
-                        project.desc.map((task, index) => {
-                          return <li key={index}>{task}</li>;
-                        })}
-                    </ul>
                   </div>
                 </div>
               </div>
@@ -48,22 +40,21 @@ export const index = ({ data }) => {
   };
   const EduMobile = () => {
     return (
-      <div className="work-slider">
+      <div className="edu-slider">
         <Slider {...settings}>
           {data &&
-            data.map((project, index) => {
+            data.map((edu, index) => {
               return (
-                <div className="work-item" key={index}>
+                <div className="edu-item" key={index}>
                   <div className="image-side">
-                    <img src={project.image} alt="" />
+                    <img src={edu.image} alt="" width="100" height="100" />
                   </div>
                   <div className="detail-side">
                     <div className="title-wrapper">
                       <div className="title">
-                        <h2 className="role">{project.role}</h2>
-                        <h2 className="company">{project.name}</h2>
-                        <h2 className="duration">{project.endYear}</h2>
-                        <h2 className="location">{project.location}</h2>
+                        <h2 className="company">{edu.name}</h2>
+                        <h2 className="duration">{edu.endYear}</h2>
+                        <h2 className="location">{edu.location}</h2>
                       </div>
                     </div>
                   </div>

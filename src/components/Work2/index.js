@@ -22,7 +22,7 @@ export const index = ({ data, getType, title, subtitle }) => {
       <div className="work-item">
         <div className="image-side">
           <div className="image-wrapper">
-            <img src={image} alt="" />
+            <img src={image} alt={name} width="100" height="100" />
           </div>
         </div>
         <div className="detail-side">
@@ -68,7 +68,12 @@ export const index = ({ data, getType, title, subtitle }) => {
               return (
                 <div className="work-item" key={index}>
                   <div className="image-side">
-                    <img src={work.image} alt="" />
+                    <img
+                      src={work.image}
+                      alt={work.name}
+                      width="100"
+                      height="100"
+                    />
                   </div>
                   <div className="detail-side">
                     <div className="title-wrapper">

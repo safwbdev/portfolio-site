@@ -56,7 +56,12 @@ export const index = ({ data, getType, title, subtitle }) => {
                   return (
                     <div className="portfolio-item" key={index}>
                       <div className="image-wrapper">
-                        <img src={project.image} alt="" />
+                        <img
+                          src={project.image}
+                          alt=""
+                          width="100"
+                          height="100"
+                        />
                       </div>
                       <div className="title-wrapper">
                         <h2>{project.title}</h2>
