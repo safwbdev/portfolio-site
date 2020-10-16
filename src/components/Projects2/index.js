@@ -59,8 +59,8 @@ export const index = ({ data, getType, title, subtitle }) => {
                         <img
                           src={project.image}
                           alt=""
-                          width="100"
-                          height="100"
+                          width="100%"
+                          height="100%"
                         />
                       </div>
                       <div className="title-wrapper">
