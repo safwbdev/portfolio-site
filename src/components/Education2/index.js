@@ -9,31 +9,34 @@ import { EDUCATION_TITLE } from "../../constants/lang";
 export const index = ({ data }) => {
   let settings = WORK_SETTINGS;
 
+  const EduBox = ({ data }) => {
+    return (
+      <div className="edu-item" key={index}>
+        <div className="image-side">
+          <div className="image-wrapper">
+            <img src={data.image} alt="" width="100%" height="100%" />
+          </div>
+        </div>
+        <div className="detail-side">
+          <div className="title-wrapper">
+            <div className="title">
+              <h2 className="yearField">
+                {data.endYear} <span>|</span> {data.field}
+              </h2>
+              <h2 className="institute">{data.name}</h2>
+              <h2 className="location">{data.location}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
   const EduDesktop = () => {
     return (
       <div className="edu-grid">
         {data &&
           data.map((edu, index) => {
-            return (
-              <div className="edu-item" key={index}>
-                <div className="image-side">
-                  <div className="image-wrapper">
-                    <img src={edu.image} alt="" width="100%" height="100%" />
-                  </div>
-                </div>
-                <div className="detail-side">
-                  <div className="title-wrapper">
-                    <div className="title">
-                      <h2 className="yearField">
-                        {edu.endYear} <span>|</span> {edu.field}
-                      </h2>
-                      <h2 className="institute">{edu.name}</h2>
-                      <h2 className="location">{edu.location}</h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
+            return <EduBox data={edu} key={index} />;
           })}
       </div>
     );
@@ -44,22 +47,7 @@ export const index = ({ data }) => {
         <Slider {...settings}>
           {data &&
             data.map((edu, index) => {
-              return (
-                <div className="edu-item" key={index}>
-                  <div className="image-side">
-                    <img src={edu.image} alt="" width="100%" height="100%" />
-                  </div>
-                  <div className="detail-side">
-                    <div className="title-wrapper">
-                      <div className="title">
-                        <h2 className="company">{edu.name}</h2>
-                        <h2 className="duration">{edu.endYear}</h2>
-                        <h2 className="location">{edu.location}</h2>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
+              return <EduBox data={edu} key={index} />;
             })}
         </Slider>
       </div>
@@ -76,17 +64,6 @@ export const index = ({ data }) => {
           <EduDesktop />
           <EduMobile />
         </div>
-      </div>
-
-      {/* MODAL */}
-      <div className="portfolio-modal">
-        <div className="close-button-wrapper">
-          <button className="close-button">
-            <i className="fa fa-times"></i>
-          </button>
-        </div>
-
-        <div className="image-wrapper"></div>
       </div>
     </>
   );
