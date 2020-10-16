@@ -25,7 +25,7 @@ html {
 }
 
 body {
-  font-family: "Monserrat", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   background-color: var(--dark);
   color: var(--light);
   width: 100%;
@@ -1258,13 +1258,13 @@ footer {
 
     ul {
       padding: 0;
-      border: 1px solid var(--primary);
+      border: 1px solid var(--grey);
       background: var(--dark);
       border-radius: 0;
 
       .MuiListItem-button {
         &:not(:last-child) {
-          border-bottom: 1px solid var(--primary);
+          border-bottom: 1px solid var(--muted);
         }
 
         a {
