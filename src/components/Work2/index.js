@@ -16,6 +16,8 @@ export const index = ({ data, getType, title, subtitle }) => {
     return newDate;
   };
   const WorkBox = ({
+    getId,
+    isSlider,
     data: { image, role, name, startDate, endDate, location, desc },
   }) => {
     return (
@@ -37,13 +39,18 @@ export const index = ({ data, getType, title, subtitle }) => {
               <h2 className="location">{location}</h2>
             </div>
           </div>
+
           <div className="task-wrapper">
-            <ul>
-              {desc &&
-                desc.map((task, index) => {
-                  return <li key={index}>{task}</li>;
-                })}
-            </ul>
+            {isSlider ? (
+              <Modal id={getId} name={name} data={desc} />
+            ) : (
+              <ul>
+                {desc &&
+                  desc.map((task, index) => {
+                    return <li key={index}>{task}</li>;
+                  })}
+              </ul>
+            )}
           </div>
         </div>
       </div>
@@ -54,7 +61,7 @@ export const index = ({ data, getType, title, subtitle }) => {
       <div className="work-grid">
         {data &&
           data.map((data, index) => {
-            return <WorkBox data={data} key={index} />;
+            return <WorkBox data={data} key={index} isSlider={false} />;
           })}
       </div>
     );
@@ -66,33 +73,12 @@ export const index = ({ data, getType, title, subtitle }) => {
           {data &&
             data.map((work, index) => {
               return (
-                <div className="work-item" key={index}>
-                  <div className="image-side">
-                    <img
-                      src={work.image}
-                      alt={work.name}
-                      width="100%"
-                      height="100%"
-                    />
-                  </div>
-                  <div className="detail-side">
-                    <div className="title-wrapper">
-                      <div className="title">
-                        <h2 className="role">{work.role}</h2>
-                        <h2 className="company">{work.name}</h2>
-                        <h2 className="duration">
-                          {`${getWorkDate(work.startDate)} -
-                        ${getWorkDate(work.endDate)}`}
-                        </h2>
-                        <h2 className="location">{work.location}</h2>
-                      </div>
-                    </div>
-
-                    <div className="task-wrapper">
-                      <Modal id={index} name={work.name} data={work.desc} />
-                    </div>
-                  </div>
-                </div>
+                <WorkBox
+                  data={work}
+                  key={index}
+                  getId={index}
+                  isSlider={true}
+                />
               );
             })}
         </Slider>

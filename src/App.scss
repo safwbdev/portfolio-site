@@ -1308,7 +1308,38 @@ footer {
 // Education Slider
 .edu-slider {
   .edu-item {
-    border: 1px solid red;
+    display: inline-block;
+    .image-side {
+      flex: unset;
+      align-items: center;
+      justify-content: center;
+      max-width: unset;
+      width: 100%;
+      text-align: center;
+      .image-wrapper {
+        img {
+          border-radius: 100%;
+          width: 40%;
+          margin-bottom: 20px;
+        }
+      }
+    }
+    .detail-side {
+      .institute {
+        color: var(--primary);
+        font-size: 1em;
+      }
+      .location {
+        color: var(--light);
+        font-size: 0.8em;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
+
+.work-slider {
+  .work-item {
     display: inline-block;
     .image-side {
       flex: unset;
