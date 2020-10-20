@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Social from "../Social";
-import { motion } from "framer-motion";
+
 import {
   titleVariants,
   subTitleVariants,
@@ -17,10 +17,12 @@ import {
   PROFILE_GREETING,
   PROFILE_DOWNLOAD,
 } from "../../constants/lang";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Index = ({ data }) => {
-  return (
-    <>
+  const Main = () => {
+    return (
       <section className="hero" style={MAIN_BACKGROUND}>
         <div className="inner-text">
           <motion.h1
@@ -46,12 +48,33 @@ const Index = ({ data }) => {
           <Social data={data} />
         </motion.span>
       </section>
+    );
+  };
+
+  const About = () => {
+    const controls = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+      if (inView) {
+        controls.start("visible");
+      }
+    }, [controls, inView]);
+    return (
       <section className="nav-section" id="about">
         <div className="container">
-          <div className="section-header">
+          <motion.div
+            className="section-header"
+            ref={ref}
+            animate={controls}
+            initial="hidden"
+            variants={{
+              visible: { opacity: 1, y: 0 },
+              hidden: { opacity: 0, y: 300 },
+            }}
+          >
             <h3 className="heading">{PROFILE_TITLE}</h3>
             <h4 className="subheading">{PROFILE_SUBTITLE}</h4>
-          </div>
+          </motion.div>
           <div className="about-content">
             <div className="image-wrapper">
               <img
@@ -83,7 +106,15 @@ const Index = ({ data }) => {
           </div>
         </div>
       </section>
+    );
+  };
+
+  return (
+    <>
+      <Main />
+      <About />
     </>
   );
 };
+
 export default Index;

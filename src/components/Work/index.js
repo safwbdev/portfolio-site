@@ -1,5 +1,4 @@
 import React from "react";
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,7 +7,7 @@ import { WORK_TITLE } from "../../constants/lang";
 import moment from "moment";
 import Modal from "./Modal";
 
-export const index = ({ data, getType, title, subtitle }) => {
+const Index = ({ data, getType, title, subtitle }) => {
   let settings = WORK_SETTINGS;
   const getWorkDate = (date) => {
     const d = new Date(date);
@@ -112,4 +111,4 @@ export const index = ({ data, getType, title, subtitle }) => {
     </>
   );
 };
-export default index;
+export default Index;
