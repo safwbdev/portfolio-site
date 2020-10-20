@@ -1,6 +1,7 @@
 import React from "react";
 import Social from "../Social";
-export const index = ({ data }) => {
+
+const Index = ({ data }) => {
   return (
     <footer>
       <div className="container">
@@ -12,4 +13,4 @@ export const index = ({ data }) => {
     </footer>
   );
 };
-export default index;
+export default Index;

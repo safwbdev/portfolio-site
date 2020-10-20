@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import "./App.scss";
 import { db } from "./firebase";
-import Projects from "./components/Projects2/";
-import Main from "./components/Main/";
 import Header from "./components/Header/";
-import Skills from "./components/Skills2/";
-import Work from "./components/Work2/";
-import Footer from "./components/Footer/";
-import Education from "./components/Education2/";
+import Main from "./components/Main/";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import Work from "./components/Work";
+import Education from "./components/Education/";
 import Contact from "./components/Contact/";
+import Footer from "./components/Footer/";
 import { motion } from "framer-motion";
+import { appVariants } from "./constants/variants";
 import {
   COLLECTION_PROFILE,
   COLLECTION_PROJECT,
@@ -47,7 +48,6 @@ import {
   SKILL_TOOLS,
   SKILL_DESIGN,
 } from "./constants/lang";
-import { appVariants } from "./constants/variants";
 
 class App extends Component {
   constructor() {

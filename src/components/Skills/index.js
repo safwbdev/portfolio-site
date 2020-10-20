@@ -1,6 +1,6 @@
 import React from "react";
 
-export const index = ({ skillData }) => {
+const Index = ({ skillData }) => {
   const SkillSection = ({ title, data }) => {
     return (
       <div className="skill-content">
@@ -39,4 +39,4 @@ export const index = ({ skillData }) => {
     </>
   );
 };
-export default index;
+export default Index;

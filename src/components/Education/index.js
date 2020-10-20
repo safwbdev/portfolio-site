@@ -6,12 +6,12 @@ import "slick-carousel/slick/slick-theme.css";
 import { WORK_SETTINGS } from "../../constants/sliderSettings";
 import { EDUCATION_TITLE } from "../../constants/lang";
 
-export const index = ({ data }) => {
+const Index = ({ data }) => {
   let settings = WORK_SETTINGS;
 
   const EduBox = ({ data }) => {
     return (
-      <div className="edu-item" key={index}>
+      <div className="edu-item">
         <div className="image-side">
           <div className="image-wrapper">
             <img src={data.image} alt="" width="100%" height="100%" />
@@ -47,7 +47,7 @@ export const index = ({ data }) => {
         <Slider {...settings}>
           {data &&
             data.map((edu, index) => {
-              return <EduBox data={edu} key={index} />;
+              return <EduBox data={edu} />;
             })}
         </Slider>
       </div>
@@ -68,4 +68,4 @@ export const index = ({ data }) => {
     </>
   );
 };
-export default index;
+export default Index;

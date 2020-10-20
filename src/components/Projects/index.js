@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -12,9 +12,20 @@ import {
   PROJECT_DEMO,
   PROJECT_GITHUB,
 } from "../../constants/lang";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
-export const index = ({ data, getType, title, subtitle }) => {
+const Index = ({ data, getType, title, subtitle }) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
   let settings;
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
   if (getType === TYPE_PERSONAL) {
     settings = PERSONAL_PROJECT_SETTINGS;
   } else if (getType === TYPE_CLIENT) {
@@ -46,7 +57,7 @@ export const index = ({ data, getType, title, subtitle }) => {
     data: { image, title, desc, skillType, github, demo },
   }) => {
     return (
-      <div className="portfolio-item" key={index}>
+      <div className="portfolio-item">
         <div className="image-wrapper">
           <img src={image} alt="" width="100%" height="100%" />
         </div>
@@ -80,10 +91,19 @@ export const index = ({ data, getType, title, subtitle }) => {
     <>
       <div className="nav-section">
         <div className="container">
-          <div className="section-header">
+          <motion.div
+            className="section-header"
+            ref={ref}
+            animate={controls}
+            initial="hidden"
+            variants={{
+              visible: { opacity: 1, y: 0 },
+              hidden: { opacity: 0, y: 300 },
+            }}
+          >
             <h3 className="heading">{title}</h3>
             <h4 className="subheading">{subtitle}</h4>
-          </div>
+          </motion.div>
           <div className="portfolio-grida">
             <Slider {...settings}>
               {data &&
@@ -97,4 +117,4 @@ export const index = ({ data, getType, title, subtitle }) => {
     </>
   );
 };
-export default index;
+export default Index;

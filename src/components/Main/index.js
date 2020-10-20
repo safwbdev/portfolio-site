@@ -18,7 +18,7 @@ import {
   PROFILE_DOWNLOAD,
 } from "../../constants/lang";
 
-export const index = ({ data }) => {
+const Index = ({ data }) => {
   return (
     <>
       <section className="hero" style={MAIN_BACKGROUND}>
@@ -86,4 +86,4 @@ export const index = ({ data }) => {
     </>
   );
 };
-export default index;
+export default Index;
