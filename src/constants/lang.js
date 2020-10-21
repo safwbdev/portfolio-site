@@ -24,7 +24,7 @@ export const PROJECT_GITHUB = "Github";
 export const PROJECT_DEMO = "Demo";
 
 //   SKILL
-export const SKILL_TITLE = "Experience";
+export const SKILL_TITLE = "Skills";
 export const SKILL_ESSENTIAL = "Essentials";
 export const SKILL_TECHNICAL = "Technical";
 export const SKILL_FRAMEWORKS = "Frameworks";

@@ -15,12 +15,12 @@ const index = ({ data }) => {
     <div className="social-icons">
       <ul>
         {socialLinks &&
-          socialLinks.map((link, index) => {
-            if (link.url) {
+          socialLinks.map(({ url, icon }, index) => {
+            if (url) {
               return (
                 <li key={index}>
-                  <a href={link.url} target="_blank" rel="noopener noreferrer">
-                    <i className={link.icon}></i>
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    <i className={icon}></i>
                   </a>
                 </li>
               );

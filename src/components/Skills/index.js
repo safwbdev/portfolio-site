@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
+import { SKILL_TITLE } from "../../constants/lang";
 const Index = ({ skillData }) => {
   const SectionHeader = () => {
     const controls = useAnimation();
@@ -22,7 +22,7 @@ const Index = ({ skillData }) => {
           hidden: { opacity: 0, y: 300 },
         }}
       >
-        <h3 className="heading">Skills</h3>
+        <h3 className="heading">{SKILL_TITLE}</h3>
       </motion.div>
     );
   };
@@ -47,10 +47,10 @@ const Index = ({ skillData }) => {
       >
         <h4>{title}</h4>
         {data &&
-          data.map((data, index) => {
+          data.map(({ icon, name }, index) => {
             const content = (
               <span>
-                <i className={data.icon}></i> <>{data.name}</>
+                <i className={icon}></i> <>{name}</>
               </span>
             );
             return (

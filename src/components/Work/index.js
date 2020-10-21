@@ -11,12 +11,34 @@ import { useInView } from "react-intersection-observer";
 
 const Index = ({ data }) => {
   let settings = WORK_SETTINGS;
-
   function getWorkDate(date) {
     const d = new Date(date);
     const newDate = moment(d).format("MMM YYYY");
     return newDate;
   }
+  const SectionHeader = () => {
+    const controls = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+      if (inView) {
+        controls.start("visible");
+      }
+    }, [controls, inView]);
+    return (
+      <motion.div
+        className="section-header"
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 300 },
+        }}
+      >
+        <h3 className="heading">{WORK_TITLE}</h3>
+      </motion.div>
+    );
+  };
   const WorkBox = ({
     getId,
     isSlider,
@@ -116,29 +138,6 @@ const Index = ({ data }) => {
               );
             })}
         </Slider>
-      </motion.div>
-    );
-  };
-  const SectionHeader = () => {
-    const controls = useAnimation();
-    const [ref, inView] = useInView();
-    useEffect(() => {
-      if (inView) {
-        controls.start("visible");
-      }
-    }, [controls, inView]);
-    return (
-      <motion.div
-        className="section-header"
-        ref={ref}
-        animate={controls}
-        initial="hidden"
-        variants={{
-          visible: { opacity: 1, y: 0 },
-          hidden: { opacity: 0, y: 300 },
-        }}
-      >
-        <h3 className="heading">{WORK_TITLE}</h3>
       </motion.div>
     );
   };

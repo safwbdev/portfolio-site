@@ -93,7 +93,6 @@ const Index = ({ data }) => {
             animate={controls}
             variants={titleVariants}
             initial="hidden"
-            // animate="visible"
           >
             <div className="image-wrapper">
               <img

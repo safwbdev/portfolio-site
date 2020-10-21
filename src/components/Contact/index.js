@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const Index = ({ data }) => {
+const Index = ({ data: { email, tel, linkedin, github } }) => {
   const SectionHeader = () => {
     const controls = useAnimation();
     const [ref, inView] = useInView();
@@ -47,41 +47,41 @@ const Index = ({ data }) => {
         }}
       >
         <div className="contact-info">
-          {data.email && (
+          {email && (
             <div className="contact-block">
               <div className="icon-wrapper">
-                <a href={`mailto:${data.email}`}>
+                <a href={`mailto:${email}`}>
                   <i className="fa fa-fw fa-envelope"></i>
                 </a>
               </div>
               <div className="details">
-                <a href={`mailto:${data.email}`}>
+                <a href={`mailto:${email}`}>
                   <h5 className="heading">Email</h5>
-                  <span>{data.email}</span>
+                  <span>{email}</span>
                 </a>
               </div>
             </div>
           )}
-          {data.tel && (
+          {tel && (
             <div className="contact-block">
               <div className="icon-wrapper">
-                <a href={`tel:${data.tel}`}>
+                <a href={`tel:${tel}`}>
                   <i className="fa fa-fw fa-phone"></i>
                 </a>
               </div>
               <div className="details">
-                <a href={`tel:${data.tel}`}>
+                <a href={`tel:${tel}`}>
                   <h5 className="heading">Call me</h5>
-                  <span>{data.tel}</span>
+                  <span>{tel}</span>
                 </a>
               </div>
             </div>
           )}
-          {data.linkedin && (
+          {linkedin && (
             <div className="contact-block">
               <div className="icon-wrapper">
                 <a
-                  href={`${data.linkedin}`}
+                  href={`${linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -90,7 +90,7 @@ const Index = ({ data }) => {
               </div>
               <div className="details">
                 <a
-                  href={`${data.linkedin}`}
+                  href={`${linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -100,23 +100,15 @@ const Index = ({ data }) => {
               </div>
             </div>
           )}
-          {data.github && (
+          {github && (
             <div className="contact-block">
               <div className="icon-wrapper">
-                <a
-                  href={`${data.github}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={`${github}`} target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-fw fa-github"></i>
                 </a>
               </div>
               <div className="details">
-                <a
-                  href={`${data.github}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={`${github}`} target="_blank" rel="noopener noreferrer">
                   <h5 className="heading">Check out my</h5>
                   <span>Github</span>
                 </a>

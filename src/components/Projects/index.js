@@ -51,11 +51,11 @@ const Index = ({ data, getType, title, subtitle }) => {
     return (
       <div className="stack-wrapper">
         {skillType &&
-          skillType.map((data, index) => {
+          skillType.map(({ icon, name }, index) => {
             const content = (
               <>
-                <i className={data.icon}></i>
-                <>{data.name}</>
+                <i className={icon}></i>
+                <>{name}</>
               </>
             );
             return (

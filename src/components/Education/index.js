@@ -10,22 +10,22 @@ import { EDUCATION_TITLE } from "../../constants/lang";
 const Index = ({ data }) => {
   let settings = WORK_SETTINGS;
 
-  const EduBox = ({ data }) => {
+  const EduBox = ({ data: { image, endYear, field, name, location } }) => {
     return (
       <div className="edu-item">
         <div className="image-side">
           <div className="image-wrapper">
-            <img src={data.image} alt="" width="100%" height="100%" />
+            <img src={image} alt="" width="100%" height="100%" />
           </div>
         </div>
         <div className="detail-side">
           <div className="title-wrapper">
             <div className="title">
               <h2 className="yearField">
-                {data.endYear} <span>|</span> {data.field}
+                {endYear} <span>|</span> {field}
               </h2>
-              <h2 className="institute">{data.name}</h2>
-              <h2 className="location">{data.location}</h2>
+              <h2 className="institute">{name}</h2>
+              <h2 className="location">{location}</h2>
             </div>
           </div>
         </div>
@@ -86,7 +86,6 @@ const Index = ({ data }) => {
       </motion.div>
     );
   };
-
   const SectionHeader = () => {
     const controls = useAnimation();
     const [ref, inView] = useInView();
