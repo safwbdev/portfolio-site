@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Social from "../Social";
-
 import {
   titleVariants,
   subTitleVariants,
@@ -92,11 +91,9 @@ const Index = ({ data }) => {
             className="about-content"
             ref={ref}
             animate={controls}
+            variants={titleVariants}
             initial="hidden"
-            variants={{
-              visible: { opacity: 1, y: 0 },
-              hidden: { opacity: 0, y: 300 },
-            }}
+            // animate="visible"
           >
             <div className="image-wrapper">
               <img
