@@ -1,9 +1,50 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Index = ({ skillData }) => {
-  const SkillSection = ({ title, data }) => {
+  const SectionHeader = () => {
+    const controls = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+      if (inView) {
+        controls.start("visible");
+      }
+    }, [controls, inView]);
     return (
-      <div className="skill-content">
+      <motion.div
+        className="section-header"
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 300 },
+        }}
+      >
+        <h3 className="heading">Skills</h3>
+      </motion.div>
+    );
+  };
+  const SkillSection = ({ title, data }) => {
+    const controls = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+      if (inView) {
+        controls.start("visible");
+      }
+    }, [controls, inView]);
+    return (
+      <motion.div
+        className="skill-content"
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 300 },
+        }}
+      >
         <h4>{title}</h4>
         {data &&
           data.map((data, index) => {
@@ -18,16 +59,14 @@ const Index = ({ skillData }) => {
               </span>
             );
           })}
-      </div>
+      </motion.div>
     );
   };
   return (
     <>
       <section className="nav-section" id="skills">
         <div className="container">
-          <div className="section-header">
-            <h3 className="heading">Skills</h3>
-          </div>
+          <SectionHeader />
           <div className="skill-section">
             {skillData &&
               skillData.map(({ title, data }, index) => {

@@ -1,5 +1,6 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -32,25 +33,81 @@ const Index = ({ data }) => {
     );
   };
   const EduDesktop = () => {
+    const controls = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+      if (inView) {
+        controls.start("visible");
+      }
+    }, [controls, inView]);
     return (
-      <div className="edu-grid">
+      <motion.div
+        className="edu-grid"
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 300 },
+        }}
+      >
         {data &&
           data.map((edu, index) => {
             return <EduBox data={edu} key={index} />;
           })}
-      </div>
+      </motion.div>
     );
   };
   const EduMobile = () => {
+    const controls = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+      if (inView) {
+        controls.start("visible");
+      }
+    }, [controls, inView]);
     return (
-      <div className="edu-slider">
+      <motion.div
+        className="edu-slider"
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 300 },
+        }}
+      >
         <Slider {...settings}>
           {data &&
             data.map((edu, index) => {
               return <EduBox data={edu} />;
             })}
         </Slider>
-      </div>
+      </motion.div>
+    );
+  };
+
+  const SectionHeader = () => {
+    const controls = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+      if (inView) {
+        controls.start("visible");
+      }
+    }, [controls, inView]);
+    return (
+      <motion.div
+        className="section-header"
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 300 },
+        }}
+      >
+        <h3 className="heading">{EDUCATION_TITLE}</h3>
+      </motion.div>
     );
   };
 
@@ -58,9 +115,7 @@ const Index = ({ data }) => {
     <>
       <div className="nav-section" id="education">
         <div className="container">
-          <div className="section-header">
-            <h3 className="heading">{EDUCATION_TITLE}</h3>
-          </div>
+          <SectionHeader />
           <EduDesktop />
           <EduMobile />
         </div>

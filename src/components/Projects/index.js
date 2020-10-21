@@ -67,7 +67,6 @@ const Index = ({ data, getType, title, subtitle }) => {
       </div>
     );
   };
-
   const ProjectBox = ({
     data: { image, title, desc, skillType, github, demo },
   }) => {
@@ -102,7 +101,6 @@ const Index = ({ data, getType, title, subtitle }) => {
       </div>
     );
   };
-
   const GetSlides = () => {
     const controls = useAnimation();
     const [ref, inView] = useInView();
@@ -113,7 +111,6 @@ const Index = ({ data, getType, title, subtitle }) => {
     }, [controls, inView]);
     return (
       <motion.div
-        className="portfolio-grida"
         ref={ref}
         animate={controls}
         initial="hidden"

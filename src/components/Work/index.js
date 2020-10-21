@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -6,14 +6,17 @@ import { WORK_SETTINGS } from "../../constants/sliderSettings";
 import { WORK_TITLE } from "../../constants/lang";
 import moment from "moment";
 import Modal from "./Modal";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
-const Index = ({ data, getType, title, subtitle }) => {
+const Index = ({ data }) => {
   let settings = WORK_SETTINGS;
-  const getWorkDate = (date) => {
+
+  function getWorkDate(date) {
     const d = new Date(date);
     const newDate = moment(d).format("MMM YYYY");
     return newDate;
-  };
+  }
   const WorkBox = ({
     getId,
     isSlider,
@@ -56,18 +59,50 @@ const Index = ({ data, getType, title, subtitle }) => {
     );
   };
   const WorkDesktop = () => {
+    const controls = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+      if (inView) {
+        controls.start("visible");
+      }
+    }, [controls, inView]);
     return (
-      <div className="work-grid">
+      <motion.div
+        className="work-grid"
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 300 },
+        }}
+      >
         {data &&
           data.map((data, index) => {
             return <WorkBox data={data} key={index} isSlider={false} />;
           })}
-      </div>
+      </motion.div>
     );
   };
   const WorkMobile = () => {
+    const controls = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+      if (inView) {
+        controls.start("visible");
+      }
+    }, [controls, inView]);
     return (
-      <div className="work-slider">
+      <motion.div
+        className="work-slider"
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 300 },
+        }}
+      >
         <Slider {...settings}>
           {data &&
             data.map((work, index) => {
@@ -81,7 +116,30 @@ const Index = ({ data, getType, title, subtitle }) => {
               );
             })}
         </Slider>
-      </div>
+      </motion.div>
+    );
+  };
+  const SectionHeader = () => {
+    const controls = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+      if (inView) {
+        controls.start("visible");
+      }
+    }, [controls, inView]);
+    return (
+      <motion.div
+        className="section-header"
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 300 },
+        }}
+      >
+        <h3 className="heading">{WORK_TITLE}</h3>
+      </motion.div>
     );
   };
 
@@ -89,24 +147,10 @@ const Index = ({ data, getType, title, subtitle }) => {
     <>
       <div className="nav-section" id="experience">
         <div className="container">
-          <div className="section-header">
-            <h3 className="heading">{WORK_TITLE}</h3>
-            <h4 className="subheading">{subtitle}</h4>
-          </div>
+          <SectionHeader />
           <WorkDesktop />
           <WorkMobile />
         </div>
-      </div>
-
-      {/* MODAL */}
-      <div className="portfolio-modal">
-        <div className="close-button-wrapper">
-          <button className="close-button">
-            <i className="fa fa-times"></i>
-          </button>
-        </div>
-
-        <div className="image-wrapper"></div>
       </div>
     </>
   );
