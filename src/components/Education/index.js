@@ -80,7 +80,7 @@ const Index = ({ data }) => {
         <Slider {...settings}>
           {data &&
             data.map((edu, index) => {
-              return <EduBox data={edu} />;
+              return <EduBox key={index} data={edu} />;
             })}
         </Slider>
       </motion.div>
