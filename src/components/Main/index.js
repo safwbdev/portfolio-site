@@ -64,6 +64,12 @@ const Index = ({ data }) => {
             {data.role}
           </motion.h2>
         </div>
+        <div className="scroll-down">
+          <a href="#about">
+            <span></span>
+          </a>
+        </div>
+
         <motion.span
           variants={socialVariants1}
           initial="hidden"
