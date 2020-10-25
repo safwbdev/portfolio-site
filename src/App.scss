@@ -110,6 +110,11 @@ header {
     font-weight: var(--f-bold);
     font-size: 1.125rem;
     transition: all 0.3 ease;
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+      & {
+        font-size: 1em;
+      }
+    }
 
     &:hover {
       color: var(--primary);
