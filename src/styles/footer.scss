@@ -1,0 +1,30 @@
+footer {
+  border-top: 3px solid var(--primary);
+  padding: 25px 0;
+  text-align: center;
+
+  .left-content {
+    margin-bottom: 10px;
+
+    p {
+      font-weight: var(--f-bold);
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    & {
+      text-align: left;
+
+      .left-content {
+        margin-bottom: 0;
+      }
+
+      .inner-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+}

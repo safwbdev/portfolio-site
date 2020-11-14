@@ -40,6 +40,7 @@ export const HEADER_BRAND = "SAFWBDEV";
 export const HEADER_ABOUT = "About";
 export const HEADER_PORTFOLIO = "Portfolio";
 export const HEADER_SKILLS = "Skills";
+export const HEADER_LEARNING = "Learning";
 export const HEADER_EXPERIENCE = "Experience";
 export const HEADER_EDUCATION = "Education";
 export const HEADER_CONTACT = "Contact";
@@ -52,3 +53,9 @@ export const WORK_CLOSE = "Close";
 
 // EDUCATION
 export const EDUCATION_TITLE = "Education";
+
+// FUTURE
+export const FUTURE_TITLE = "Learning";
+export const FUTURE_SUBTITLE = "Because learning is a life-long process";
+export const FUTURE_LEARNING = "Currently learning";
+export const FUTURE_PLANNING = "Wants to learn";

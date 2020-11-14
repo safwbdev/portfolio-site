@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import "./App.scss";
+import "./styles/index.scss";
 import { db } from "./firebase";
 import Header from "./components/Header/";
 import Main from "./components/Main/";
 import Projects from "./components/Projects";
+import Future from "./components/Future";
 import Skills from "./components/Skills";
 import Work from "./components/Work";
 import Education from "./components/Education/";
@@ -274,6 +275,7 @@ class App extends Component {
             />
           </section>
           <Skills skillData={skillArray} />
+          <Future />
           <Work data={work} />
           <Education data={education} />
           <Contact data={profile} />

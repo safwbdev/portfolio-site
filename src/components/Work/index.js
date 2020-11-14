@@ -44,6 +44,7 @@ const Index = ({ data }) => {
     isSlider,
     data: { image, role, name, startDate, endDate, location, desc },
   }) => {
+    let currentStatus = endDate ? getWorkDate(endDate) : "Current";
     return (
       <div className="work-item">
         <div className="image-side">
@@ -57,8 +58,8 @@ const Index = ({ data }) => {
               <h2 className="role">{role}</h2>
               <h2 className="company">{name}</h2>
               <h2 className="duration">
-                {`${getWorkDate(startDate)} -
-            ${getWorkDate(endDate)}`}
+                {/* {`${getWorkDate(startDate)} - ${getWorkDate(endDate)}`} */}
+                {`${getWorkDate(startDate)} - ${currentStatus}`}
               </h2>
               <h2 className="location">{location}</h2>
             </div>
